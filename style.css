@@ -1,0 +1,96 @@
+body
+{
+	background-color: lightblue;
+	font-family: calibri;
+}
+
+.menu
+{
+	background-color: red;
+	width:1000px;
+	height:40px;
+	margin:0px auto;
+	font-weight:bold;
+	text-align:center;
+}
+
+.menu a
+{
+	text-decoration: none;
+	font-size:20px;
+	color:black;
+}
+
+.menu a:hover
+{
+	text-decoration: underline;
+	color:white;
+	font-size:22px;
+}
+
+.header
+{
+	background-color: green;
+	width:1000px;
+	height:150px;
+	margin:0px auto;
+}
+
+.content
+{
+	background-color:white;
+	width:700px;
+	height:700px;
+	float:left;
+	/*border: 3px blue solid;*/
+	overflow: auto;
+}
+
+.side_info
+{
+	background-color:orange;
+	width:300px;
+	height:700px;
+	float:right;
+}
+
+.login_box
+{
+	background-color:black;
+	width:300px;
+	height:100px;
+	float:right;
+}
+
+/*.login_box .Userinfolink
+{
+	background-color:yellow;
+	width:300px;
+	height:150px;
+	float:right;
+}*/
+
+.login_box .login_form
+{
+	background-color:white;
+	width:300px;
+	height:100px;
+	float:right;
+	/*border: 3px blue solid;*/
+}
+
+.login_box .login_message
+{
+	background-color:white;
+	width:300px;
+	height:100px;
+	float:right;
+}
+
+.content_holder
+{
+	/*background-color:purple;*/
+	width:1000px;
+	height:720px;
+	margin:0px auto;
+}
