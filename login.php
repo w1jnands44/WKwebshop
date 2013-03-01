@@ -13,12 +13,19 @@
 				
 		$username = mysql_real_escape_string($_POST['username']);
 		$password = mysql_real_escape_string($_POST['password']);
-				
-		//$username = md5($username);
-		//$password = md5($password);
+		
+		/*
+		//Heb salt nodig om check uit te voeren of hash klopt. 
+		//Kan salt niet uit DB krijgen doordat er key nodig is om data te krijgen via query
+		
+		include 'encrypt.php';
+		
+		$username = validate_password($username, $
+		$password = 
+		*/
 				
 		$sql = mysql_query("SELECT * FROM users WHERE user_name='$username'");
-		while ($data = mysql_fetch_array($sql)) 
+		while ($data = mysql_fetch_array($sql))
 		{
 			$db_user_id = $data['user_id'];
 			$db_username = $data['user_name'];

@@ -55,12 +55,16 @@
 								$username = $_POST['username'];
 								$password = $_POST['password'];
 								
-								//$username = md5($username);
-								//$password = md5($password);
+								/*
+								$salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTES, MCRYPT_DEV_URANDOM));
+								
+								$username = create_hash($username, $salt);
+								$password = create_hash($username, $salt);
+								*/
 								
 								$sql = mysql_query("SELECT user_name FROM users WHERE user_name='$username'");
 								while ($data = mysql_fetch_array($sql)) {
-									$db_username = $data['username'];
+									$db_username = $data['user_name'];
 								}
 								
 								if (!empty($db_username)) 
