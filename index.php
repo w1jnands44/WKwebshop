@@ -15,7 +15,7 @@
 			<?php
 				if(isset($_SESSION['logged']) && $_SESSION['user_acceslevel'] >= 3)
 				{
-					echo '|<a href="admin.php">Admin Panel1</a>';
+					echo '|<a href="admin.php">Admin Panel</a>';
 				}
 			?>
 		</div>
@@ -33,7 +33,6 @@
 				text text text text
 				text text text text
 				</pre>
-				niojhoihoihoihoihoih
 			</div>
 			<div class="side_info">
 				<div class="login_box">
