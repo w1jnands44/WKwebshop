@@ -33,16 +33,6 @@
 				text text text text
 				text text text text
 				</pre>
-				
-				<pre>
-				
-					DEVELOPMENT
-					DEVELOPMENT
-					DEVELOPMENT
-					DEVELOPMENT
-					DEVELOPMENT
-				
-				</pre>
 			</div>
 			<div class="side_info">
 				<div class="login_box">
