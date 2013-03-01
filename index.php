@@ -15,7 +15,7 @@
 			<?php
 				if(isset($_SESSION['logged']) && $_SESSION['user_acceslevel'] >= 3)
 				{
-					echo '|<a href="admin.php">Admin Panel</a>';
+					echo '|<a href="admin.php">Admin Panel1</a>';
 				}
 			?>
 		</div>
