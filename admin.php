@@ -73,7 +73,7 @@
 								}
 								else
 								{
-									mysql_query("INSERT INTO users (user_name, user_password, user_acceslevel, user_voornaam, user_achternaam) VALUES('" . $username . "','" . $password . "','" . $_POST['acceslevel'] . "','" . $_POST['voornaam'] . "','" . $_POST['achternaam'] . "')");
+									mysql_query("INSERT INTO users (user_name, user_password, user_acceslevel, user_salt) VALUES('" . $username . "','" . $password . "','" . $_POST['acceslevel'] . "','" . $salt . "')");
 									echo "<p style='margin-top:10%;'>Gebruiker aangemaakt!</p>";
 								}
 								
@@ -88,15 +88,19 @@
 									<form action='<?php echo $_SERVER['PHP_SELF']; ?>' method='post'>
 										<tr><td>Gebruikersnaam:</td><td><input type='text' name='username'></td></tr>
 										<tr><td>Wachtwoord:</td><td><input type='password' name='password'></td></tr>
-										<tr><td>Voornaam:</td><td><input type='text' name='voornaam'></td></tr>
-										<tr><td>Achternaam:</td><td><input type='text' name='achternaam'></td></tr>
-										<tr><td>Acces level:</td><td>
-										<select name='acceslevel'>
-										   <option value="0">Geen toegang</option>
-										   <option value="1">Gast</option>
-										   <option value="2">Gebruiker</option>
-										   <option value="3">Administrator</option>
-										</select></td></tr>
+										<!--<tr><td>Voornaam:</td><td><input type='text' name='voornaam'></td></tr>
+										<tr><td>Achternaam:</td><td><input type='text' name='achternaam'></td></tr>-->
+										<tr>
+											<td>Acces level:</td>
+											<td>
+												<select name='acceslevel'>
+												   <option value="0">Geen toegang</option>
+												   <option value="1">Gebruiker</option>
+												   <option value="2">Klant</option>
+												   <option value="3">Administrator</option>
+												</select>
+											</td>
+										</tr>
 										<tr><td></td><td><input id='submit_btn' type='submit' name='submit' value='Registreren'></td></td>
 									</form>
 								</table>
