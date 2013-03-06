@@ -17,7 +17,7 @@ define("HASH_ITERATION_INDEX", 1);
 define("HASH_SALT_INDEX", 2);
 define("HASH_PBKDF2_INDEX", 3);
 
-function create_hash($password, $salt)
+function create_hash($password)
 {
 	//          md5:1000:abcd:bdwe
 	/*
@@ -28,7 +28,7 @@ function create_hash($password, $salt)
 	[3] = bdwe
 	*/
     // format: algorithm:iterations:salt:hash
-    //$salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTES, MCRYPT_DEV_URANDOM));
+    $salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTES, MCRYPT_DEV_URANDOM));
     return PBKDF2_HASH_ALGORITHM . ":" . PBKDF2_ITERATIONS . ":" .  $salt . ":" . 
         base64_encode(pbkdf2(
             PBKDF2_HASH_ALGORITHM,

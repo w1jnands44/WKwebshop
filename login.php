@@ -17,22 +17,19 @@
 		/*
 		//Heb salt nodig om check uit te voeren of hash klopt. 
 		//Kan salt niet uit DB krijgen doordat er key nodig is om data te krijgen via query
+		*/
 		
 		include 'encrypt.php';
 		
-		$username = validate_password($username, $
-		$password = 
-		*/
+		$password = create_hash($password, $salt);
 				
 		$sql = mysql_query("SELECT * FROM users WHERE user_name='$username'");
 		while ($data = mysql_fetch_array($sql))
 		{
 			$db_user_id = $data['user_id'];
-			$db_username = $data['user_name'];
+			$db_user_name = $data['user_name'];
 			$db_password = $data['user_password'];
 			$db_acceslevel = $data['user_acceslevel'];
-			$db_voornaam = $data['user_voornaam'];
-			$db_achternaam = $data['user_achternaam'];
 		}
 				
 		mysql_close($connect);
@@ -42,12 +39,20 @@
 		}
 		else 
 		{
-			if ($db_password == $password) 
+			if (validate_password($password, $db_password)) 
 			{
+				$sql = mysql_query("SELECT * FROM klanten WHERE klant_id='$db_user_id'");
+				while ($data = mysql_fetch_array($sql))
+				{
+					$_SESSION['klant_id']= $data['klant_id'];
+					$_SESSION['klant_voornaam'] = $data['klant_voornaam'];
+					$_SESSION['klant_achternaam'] = $data['klant_achternaam'];
+					$_SESSION['klant_email']= $data['user_acceslevel'];
+				}
+				
 				$_SESSION['user_id'] = $db_user_id;
+				$_SESSION['user_name'] = $db_user_name;
 				$_SESSION['user_acceslevel'] = $db_acceslevel;
-				$_SESSION['user_voornaam'] = $db_voornaam;
-				$_SESSION['user_achternaam'] = $db_achternaam;
 				$_SESSION['logged'] = true;
 				header("Location: " . $_POST['returnpage']);
 			}
