@@ -1,5 +1,5 @@
 <div class="content">
-	<form action="register">
+	<form action="register.php" method="POST">
 		<tr><td>Gebruikersnaam:</td><td><input type="text" name="username"/></td></tr>
 		<tr><td>Wachtwoord:</td><td><input type="password" name="password"/></td></tr>
 		<tr><td>Voornaam:</td><td><input type="text" name="voornaam"/></td></tr>
