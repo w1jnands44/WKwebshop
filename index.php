@@ -16,8 +16,8 @@
 			<h1>WK Webshop</h1>
 		</div>
 		<div class="menu">
-			<a href="index.php?page=home">Home</a>|
-			<a href="#">Artikelen</a>
+			<a href="?page=home">Home</a>|
+			<a href="?page=artikelen">Artikelen</a>
 			<?php
 				if(isset($_SESSION['logged']) && $_SESSION['user_acceslevel'] >= 3)
 				{
