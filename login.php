@@ -29,7 +29,7 @@
 				
 		mysql_close($connect);
 				
-		if (empty($db_username)) {
+		if (empty($db_user_name)) {
 			echo 'Gebruiker niet gevonden';
 		}
 		else 
