@@ -21,7 +21,7 @@
 		
 		include 'encrypt.php';
 		
-		$password = create_hash($password, $salt);
+		$password = create_hash($password);
 				
 		$sql = mysql_query("SELECT * FROM users WHERE user_name='$username'");
 		while ($data = mysql_fetch_array($sql))
@@ -34,7 +34,7 @@
 				
 		mysql_close($connect);
 				
-		if (empty($db_username)) {
+		if (empty($db_user_name)) {
 			echo 'Gebruiker niet gevonden';
 		}
 		else 
