@@ -1,7 +1,7 @@
 <div class="content">
 	<div class="home_artikel">
 
-		<div class="categorie"> 
+		<div class="product_categorie"> 
 			<i>categorie</i>
 		</div>
 
@@ -9,7 +9,17 @@
 			<b>insert titel hier</b>
 		</div>
 
-		textetxtext
+		<div class="product_afbeelding">
+			<b>insert afbeelding hier</b>
+		</div>
 
+		<div class="product_beschrijving">
+			<b>insert beschrijving hier</b>
+		</div>
+
+		<div class="product_prijs">
+			<i>prijs</i>
+		</div>
+		
 	</div>
 </div>
