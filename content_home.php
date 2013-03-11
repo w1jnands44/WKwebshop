@@ -1,5 +1,4 @@
-<div class="content">
-	<pre>
+<pre>
 	text text text text
 	text text text text
 	text text text text
@@ -10,5 +9,4 @@
 	text text text text
 	text text text text
 	text text text text
-	</pre>
-</div>
+</pre>
