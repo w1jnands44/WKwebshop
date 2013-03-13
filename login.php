@@ -40,7 +40,7 @@
 				$_SESSION['user_name'] = $db_user_name;
 				$_SESSION['user_acceslevel'] = $db_acceslevel;
 				$_SESSION['logged'] = true;
-				//header("Location: " . $_POST['returnpage']);
+				header("Location: " . $_POST['returnpage']);
 			}
 			
 			echo 'Wachtwoord incorrect';
