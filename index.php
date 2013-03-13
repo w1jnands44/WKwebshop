@@ -49,7 +49,7 @@
 						}
 						else
 						{
-							echo '<div class="login_message"><p>Welkom <a href="details.php">' . $_SESSION['klant_voornaam'] . " " . $_SESSION['klant_achternaam'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
+							echo '<div class="login_message"><p style="text-align:center;">Welkom <a href="details.php">' . $_SESSION['klant_voornaam'] . " " . $_SESSION['klant_achternaam'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
 						}
 					?>
 					</div>
