@@ -41,7 +41,7 @@
 									<tr><td>Gebruikersnaam:</td><td><input type="text" name="username"/></td></tr>
 									<tr><td>Wachtwoord:</td><td><input type="password" name="password"/></td></tr>
 									<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Inloggen"/></td></tr>
-									<input type="hidden" name="returnpage" value="<?php echo $_SERVER['PHP_SELF'] . "?" . $_GET['page'] ?>">
+									<input type="hidden" name="returnpage" value="<?php echo $_SERVER['PHP_SELF'] . "?page=" . $_GET['page'] ?>">
 									<tr><td colspan="2" style="text-align:center;">Nog geen account? Registreer <a href="index.php?page=register">hier</a>.</td></tr>
 								</table>
 							</form>
@@ -49,7 +49,7 @@
 						}
 						else
 						{
-							echo '<div class="login_message"><p>Welkom <a href="details.php">' . $_SESSION['user_voornaam'] . " " . $_SESSION['user_achternaam'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
+							echo '<div class="login_message"><p>Welkom <a href="details.php">' . $_SESSION['klant_voornaam'] . " " . $_SESSION['klant_achternaam'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
 						}
 					?>
 					</div>

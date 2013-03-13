@@ -29,13 +29,13 @@
 			if (validate_password($password, $username, $db_password))
 			{
 				$sql = mysql_query("SELECT * FROM klanten WHERE klant_id='$db_user_id'");
-				while ($data = mysql_fetch_array($sql))
-				{
-					$_SESSION['klant_id']= $data['klant_id'];
-					$_SESSION['klant_voornaam'] = $data['klant_voornaam'];
-					$_SESSION['klant_achternaam'] = $data['klant_achternaam'];
-					$_SESSION['klant_email']= $data['user_acceslevel'];
-				}
+				
+				$data = mysql_fetch_array($sql);
+				
+				$_SESSION['klant_id'] = $data['klant_id'];
+				$_SESSION['klant_voornaam'] = $data['klant_voornaam'];
+				$_SESSION['klant_achternaam'] = $data['klant_achternaam'];
+				$_SESSION['klant_email']= $data['user_email'];
 				
 				$_SESSION['user_id'] = $db_user_id;
 				$_SESSION['user_name'] = $db_user_name;
