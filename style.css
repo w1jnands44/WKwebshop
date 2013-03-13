@@ -187,3 +187,27 @@ body
 	margin-right: 2px;
 
 }
+
+.artikel_zoeken
+{
+	margin-top: 5px;
+	margin-left: 5px;
+
+	width:685px;
+	height:200px;
+	border:solid;
+	border-width: 2px;
+}
+
+.artikel_zoeken .artikel_btnzoeken
+{
+
+	text-align: right;
+	
+	width:100px;
+	height: 40px;
+	float: right;
+
+	margin-top: 170px;
+	margin-right: 2px;
+}
