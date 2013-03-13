@@ -27,7 +27,15 @@
 		<div class="content_holder">
 			<div class="content">
 				<?php
-					include 'content_' . $_GET['page'] . '.php';
+					$filename = 'content_' . $_GET['page'] . '.php';
+					if(bool file_exists ( string $filename ))
+					{
+						include $filename;
+					}
+					else
+					{
+						echo "Je bent een retard, want die pagina bestaat gaa nie. Dus stoppen met shit invoeren in de url! MOFO!";
+					}
 				?>
 			</div>
 				<div class="side_info">
