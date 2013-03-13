@@ -28,7 +28,7 @@
 			<div class="content">
 				<?php
 					$filename = 'content_' . $_GET['page'] . '.php';
-					if(bool file_exists ( string $filename ))
+					if(file_exists ($filename ))
 					{
 						include $filename;
 					}
