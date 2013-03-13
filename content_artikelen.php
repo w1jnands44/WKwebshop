@@ -1,12 +1,11 @@
 <form>
 	<div class="artikel_zoeken">
-		<div class="artikel_plaintext">
+		<div class="zoeken">
 			<table>
 				<tr>
 					<td>
 						Zoeken op
 					</td>
-
 					<td>
 						<input type="radio" name="keuze" value="naam">naam<br>
 						<input type="radio" name="keuze" value="categorie">categorie<br>
@@ -14,19 +13,14 @@
 						<input type="radio" name="keuze" value="beschrijving">beschrijving<br>
 						<input type="radio" name="keuze" value="prijs">prijs<br>
 					</td>
+					<td>
+						<input type="text" name="searchbar"/>
+					</td>
+					<td>
+						<input type="submit" name="zoeken" value="Zoeken"/>
+					</td>
 				</tr>
 			</table>
-		</div>
-
-
-
-
-
-
-
-
-		<div class="artikel_btnzoeken">
-			<input type="submit" name="zoeken" value="Zoeken"/>
 		</div>
 	</div> 
 </form>

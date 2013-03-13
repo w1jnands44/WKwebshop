@@ -199,15 +199,8 @@ body
 	border-width: 2px;
 }
 
-.artikel_zoeken .artikel_btnzoeken
+.artikel_zoeken .zoeken
 {
-
-	text-align: right;
-	
-	width:100px;
-	height: 40px;
-	float: right;
-
-	margin-top: 170px;
-	margin-right: 2px;
+	border:solid;
+	border-width: 2px;
 }
