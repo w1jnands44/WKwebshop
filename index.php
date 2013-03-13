@@ -34,7 +34,7 @@
 					}
 					else
 					{
-						echo "Je bent een retard, want die pagina bestaat gaa nie. Dus stoppen met shit invoeren in de url! MOFO!";
+						include 'content_home';
 					}
 				?>
 			</div>
