@@ -27,7 +27,7 @@
 		<div class="content_holder">
 			<div class="content">
 				<?php
-					$filename = 'content_' . $_GET['page'] . '.php';
+					$filename = 'content/content_' . $_GET['page'] . '.php';
 					if(file_exists ($filename ))
 					{
 						include $filename;
