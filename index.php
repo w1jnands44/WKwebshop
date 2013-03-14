@@ -20,7 +20,7 @@
 			<?php
 				if(isset($_SESSION['logged']) && $_SESSION['user_acceslevel'] >= 3)
 				{
-					echo '|<a href="admin.php">Admin Panel</a>';
+					echo '|<a href="?page=admin.php">Admin Panel</a>';
 				}
 			?>
 		</div>
@@ -57,7 +57,14 @@
 						}
 						else
 						{
-							echo '<div class="login_message"><p style="text-align:center;">Welkom <a href="index.php?page=details">' . $_SESSION['klant_voornaam'] . " " . $_SESSION['klant_achternaam'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
+							if(!isset($_SESSION['klant_voornaam']))
+							{
+								echo '<div class="login_message"><p style="text-align:center;">Welkom <a href="index.php?page=details">' . $_SESSION['user_name'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
+							}
+							else
+							{
+								echo '<div class="login_message"><p style="text-align:center;">Welkom <a href="index.php?page=details">' . $_SESSION['klant_voornaam'] . " " . $_SESSION['klant_achternaam'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
+							}
 						}
 					?>
 					</div>

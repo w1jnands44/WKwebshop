@@ -27,15 +27,17 @@
 		{
 			if (validate_password($password, $username, $db_password))
 			{
-				$sql = mysql_query("SELECT * FROM klanten WHERE klant_id='$db_klant_id'");
+				if (!empty($db_klant_id)) {
+					$sql = mysql_query("SELECT * FROM klanten WHERE klant_id='$db_klant_id'");
 				
-				$data = mysql_fetch_array($sql);
-				
-				$_SESSION['klant_id'] = $data['klant_id'];
-				$_SESSION['klant_voornaam'] = $data['klant_voornaam'];
-				$_SESSION['klant_achternaam'] = $data['klant_achternaam'];
-				$_SESSION['klant_email']= $data['klant_email'];
-				
+					$data = mysql_fetch_array($sql);
+					
+					$_SESSION['klant_id'] = $data['klant_id'];
+					$_SESSION['klant_voornaam'] = $data['klant_voornaam'];
+					$_SESSION['klant_achternaam'] = $data['klant_achternaam'];
+					$_SESSION['klant_email']= $data['klant_email'];
+				}
+
 				$_SESSION['user_id'] = $db_user_id;
 				$_SESSION['user_name'] = $db_user_name;
 				$_SESSION['user_acceslevel'] = $db_acceslevel;

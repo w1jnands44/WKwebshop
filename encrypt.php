@@ -19,16 +19,10 @@ function validate_password($password, $username, $db_password)
 	
 	if ($password == $db_password)
 	{
-		/*echo "password: " . $password;
-		echo "db_password: " . $db_password;
-		echo "true";*/
 		return true;
 	}
 	else
 	{
-		/*echo "password: " . $password;
-		echo "db_password: " . $db_password;
-		echo "false";*/
 		return false;
 	}
 }
