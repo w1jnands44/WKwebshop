@@ -10,16 +10,16 @@
 		
 		<table>
 			<tr>
-				<td><a href='index.php?page=admin&action="1"'>Een gebruiker toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=1'>Een gebruiker toevoegen</a></td>
 			</tr>
 			<tr>
-				<td><a href='index.php?page=admin&action="2"'>Een artikel toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=2'>Een artikel toevoegen</a></td>
 			</tr>
 			<tr>
-				<td><a href='index.php?page=admin&action="3"'>Een merk toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=3'>Een merk toevoegen</a></td>
 			</tr>
 			<tr>
-				<td><a href='index.php?page=admin&action="4"'>Een catagorie toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=4'>Een catagorie toevoegen</a></td>
 			</tr>
 		</table>
 		
@@ -35,15 +35,15 @@
 				<table border="0px;">
 					<tr><td>Gebruikersnaam:</td><td><input type="text" name="username"/></td></tr>
 					<tr><td>Wachtwoord:</td><td><input type="password" name="password"/></td></tr>
-					<select name='acceslevel'>
+					<tr><td colspan="2" style="text-align:center;"><select name='acceslevel'>
 						<option value="0">Geen toegang</option>
 						<option value="1">Klant</option>
 						<option value="2">--no-data--</option>
 						<option value="3">Administrator</option>
 					</select></td></tr>
-					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Registreer"/></td></tr>
+					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
 				</table>
-				<input type="hidden" name="returnpage" value='admin&action="1"&state="1"'/>
+				<input type="hidden" name="returnpage" value='admin&action=1&state=1'/>
 			</form>
 			
 			<?php
@@ -63,7 +63,29 @@
 	}
 	else if($_GET['action'] == "3")
 	{
-		echo '<p>Hier komt "merk toevoegen". <a href="index.php?page=admin">Terugkeren.</a></p>';
+		if(!isset($_GET['state']) || $_GET['state'] == "0")
+		{
+			?>
+			<h2>Een merk toevoegen</h2>
+			<form action='additem.php?itemid=1' method="POST">
+				<table border="0px;">
+					<tr><td>Naam:</td><td><input type="text" name="merknaam"/></td></tr>
+					<tr><td>Beschrijving:</td><td><input type="text" name="merkbeschrijving"/></td></tr>
+					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
+					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Registreer"/></td></tr>
+				</table>
+				<input type="hidden" name="returnpage" value='admin&action=3&state=1'/>
+			</form>
+			<?php
+		}		
+		else if($_GET['state'] == "1")
+		{
+			?>
+			
+			<p>Merk toegevoegd. <a href="index.php?page=admin">Terugkeren.</a></p>
+			
+			<?php
+		}
 	}
 	else if($_GET['action'] == "4")
 	{
