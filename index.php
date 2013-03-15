@@ -28,13 +28,14 @@
 			<div class="content">
 				<?php
 					$filename = 'content/content_' . $_GET['page'] . '.php';
-					if(file_exists ($filename ))
+					
+					if(file_exists ($filename))
 					{
 						include $filename;
 					}
 					else
 					{
-						include 'content_home';
+						include 'content/content_home.php';
 					}
 				?>
 			</div>
