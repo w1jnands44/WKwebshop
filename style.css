@@ -96,17 +96,8 @@ body
 	margin:0px auto;
 }
 
-.home_artikel
-{
-	margin-top: 5px;
-	margin-left: 5px;
 
-	width:685px;
-	height:200px;
-	border:solid;
-	border-width: 2px;
-}
-
+/*
 .home_artikel .product_categorie
 {
 	text-align: right;
@@ -186,21 +177,69 @@ body
 	margin-top: 5px;
 	margin-right: 2px;
 
+} */
+
+.home_artikel
+{
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+
+	width:auto;
+	height:200px;
+	border:solid;
+	border-width: 2px;
+}
+
+.home_artikel .categorie_afbeelding
+{
+
+	text-align: center;
+
+	border: solid;
+	border-width: 1px;
+
+	height: 150px;
+	width: 150px;
+
+	margin-top: 25px;
+	margin-left: 10px;
+}
+
+.home_artikel .categorie_naam
+{
+
+	text-align: center;
+	font-size: 80px;
+	
+	border: solid;
+	border-width: 1px;
+
+	height: 125px;
+	width: auto;
+
+	margin-top: -140px;
+	
+	margin-left: 180px;
+	margin-right: 10px;
 }
 
 .artikel_zoeken
 {
 	margin-top: 5px;
 	margin-left: 5px;
-
-	width:685px;
-	height:200px;
-	border:solid;
-	border-width: 2px;
+	margin-right: 5px;
+	
+	
+	
+	/*border:solid;
+	border-width: 2px; */
 }
 
 .artikel_zoeken .zoeken
 {
-	border:solid;
-	border-width: 2px;
+	margin-left: auto;
+	margin-right: auto;
+	/*border:solid;
+	border-width: 2px;*/
 }

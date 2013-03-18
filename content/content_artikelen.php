@@ -1,49 +1,59 @@
-<form>
-	<div class="artikel_zoeken">
-		<div class="zoeken">
-			<table>
-				<tr>
-					<td>
-						Zoeken op
-					</td>
-					<td>
-						<input type="radio" name="keuze" value="naam">naam<br>
-						<input type="radio" name="keuze" value="categorie">categorie<br>
-						<input type="radio" name="keuze" value="prijs">titel<br>
-						<input type="radio" name="keuze" value="beschrijving">beschrijving<br>
-						<input type="radio" name="keuze" value="prijs">prijs<br>
-					</td>
-					<td>
-						<input type="text" name="searchbar"/>
-					</td>
-					<td>
-						<input type="submit" name="zoeken" value="Zoeken"/>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div> 
-</form>
+<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
+		<div class="artikel_zoeken">
+			<div>
+				<table class="zoeken">
+					<tr>
+						<td>
+							Zoeken op
+						</td>
+						<td>
+							<input type="radio" name="keuze" value="naam">naam<br>
+							<input type="radio" name="keuze" value="categorie">categorie<br>
+							<input type="radio" name="keuze" value="prijs">titel<br>
+							<input type="radio" name="keuze" value="beschrijving">beschrijving<br>
+							<input type="radio" name="keuze" value="prijs">prijs<br>
+						</td>
+						<td>
+							<input type="text" name="searchbar"/>
+						</td>
+						<td>
+							<input type="submit" name="zoeken" value="Zoeken"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div> 
+	</form>
+<hr />
 
-<!-- <div class="home_artikel">
+<?php
+	if(!isset($_POST["zoeken"]))
+	{
+		include 'connect.php';	
 
-	<div class="product_categorie"> 
-		<i>categorie</i>
-	</div>
+		$query = "SELECT * FROM catagorie GROUP BY catagorie_id";
 
-	<div class="product_titel">
-		<b>insert titel hier</b>
-	</div>
+		$resultaat = mysql_query($query) or die (mysql_error()) ;
 
-	<div class="product_afbeelding">
-		<b>insert afbeelding hier</b>
-	</div>
+		while ($row = mysql_fetch_array($resultaat)) 
+		{
+			$data[] = $row;
+		}
 
-	<div class="product_beschrijving">
-		<b>insert beschrijving hier</b>
-	</div>
+		foreach ($data as $key) 
+		{
+			?>
+				<div class="home_artikel">
 
-	<div class="product_prijs">
-		<i>prijs</i>
-	</div>
-</div> -->
+					<div class="categorie_afbeelding">
+						<b>afbeelding</b>
+					</div>
+
+					<div class="categorie_naam">
+						<b> <?php echo $key['catagorie_naam']; ?></b>
+					</div>
+				</div> 
+			<?php 
+		}
+	}
+?>
