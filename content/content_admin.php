@@ -67,7 +67,7 @@
 		{
 			?>
 			<h2>Een merk toevoegen</h2>
-			<form action='additem.php?itemid=1' method="POST">
+			<form action='additem.php?itemid=1' method="POST" enctype="multipart/form-data">
 				<table border="0px;">
 					<tr><td>Naam:</td><td><input type="text" name="merknaam"/></td></tr>
 					<tr><td>Beschrijving:</td><td><input type="text" name="merkbeschrijving"/></td></tr>

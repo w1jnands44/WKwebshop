@@ -25,18 +25,6 @@
 	</div> 
 </form>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- <div class="home_artikel">
 
 	<div class="product_categorie"> 

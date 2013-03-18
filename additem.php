@@ -1,7 +1,7 @@
 <?php
 	if(!isset($_SESSION['logged']) || $_SESSION['user_acceslevel'] < 3)
 	{
-		header("Location: index.php?page=home");
+		//header("Location: index.php?page=home");
 	}
 	
 	if(!isset($_GET['itemid']) || $_GET['itemid'] == "0")
@@ -13,8 +13,10 @@
 		include 'connect.php';
 
 		$merknaam = ucfirst(strtolower($_POST['merknaam']));
-
-		$query = 'INSERT INTO merken (`merk_naam`, `merk_beschrijving`) VALUES ("' . $merknaam . '", "' . $_POST['merk_beschrijving'] . '")';
+		
+		include 'save_image.php';
+		
+		$query = 'INSERT INTO merken (`merk_naam`, `merk_beschrijving`, `merk_image`) VALUES ("' . $merknaam . '", "' . $_POST['merkbeschrijving'] . '", "' . $target_path . '")';
 
 		mysql_query($query);
 
