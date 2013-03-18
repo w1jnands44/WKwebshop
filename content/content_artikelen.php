@@ -46,7 +46,7 @@
 				<div class="home_artikel">
 
 					<div class="categorie_afbeelding">
-						<b>afbeelding</b>
+						<img class="afbeelding" alt="test" src="<?php echo $key['catagorie_image']; ?>"/>
 					</div>
 
 					<div class="categorie_naam">

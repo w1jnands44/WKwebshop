@@ -96,89 +96,6 @@ body
 	margin:0px auto;
 }
 
-
-/*
-.home_artikel .product_categorie
-{
-	text-align: right;
-	
-	width:100px;
-	height: 25px;
-	float: right;
-
-	border:solid;
-	border-width: 1px;
-
-	margin-top: 2px;
-	margin-right: 2px;
-
-}
-
-.home_artikel .product_titel
-{
-	text-align: center;
-
-	width: 200px;
-	height: 25px;
-
-	border:solid;
-	border-width: 1px;
-
-	margin-top: 2px;
-
-	margin-left: auto ;
-  	margin-right: auto ;
-}
-
-
-.home_artikel .product_afbeelding
-{
-
-	text-align: center;
-
-	border: solid;
-	border-width: 1px;
-
-	height: 100px;
-	width: 100px;
-
-	margin-top: 25px;
-	margin-left: 10px;
-}
-
-.home_artikel .product_beschrijving
-{
-
-	text-align: center;
-	
-	border: solid;
-	border-width: 1px;
-
-	height: 125px;
-	width: auto;
-
-	margin-top: -120px;
-	
-	margin-left: 125px;
-	margin-right: 10px;
-}
-
-.home_artikel .product_prijs
-{
-	text-align: right;
-	
-	width:100px;
-	height: 25px;
-	float: right;
-
-	border:solid;
-	border-width: 1px;
-
-	margin-top: 5px;
-	margin-right: 2px;
-
-} */
-
 .home_artikel
 {
 	margin-top: 5px;
@@ -204,6 +121,12 @@ body
 
 	margin-top: 25px;
 	margin-left: 10px;
+}
+
+.home_artikel .categorie_afbeelding .afbeelding
+{
+	width:auto;
+	height: auto;
 }
 
 .home_artikel .categorie_naam
