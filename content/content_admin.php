@@ -59,7 +59,58 @@
 	}
 	else if($_GET['action'] == "2")
 	{
-		echo '<p>Hier komt "artikel toevoegen". <a href="index.php?page=admin">Terugkeren.</a></p>';
+		if(!isset($_GET['state']) || $_GET['state'] == "0")
+		{
+		?>
+			<h2>Een artikel toevoegen</h2>
+			<form action='additem.php?itemid=0' method="POST" enctype="multipart/form-data">
+				<table border="0px;">
+					<tr><td>Naam:</td><td><input type="text" name="naam" maxlength="30"/></td></tr>
+					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving" maxlength="500"/></td></tr>
+					<tr><td>Categorie:</td><td><select name="categorie_id">
+					<?php
+						include 'connect.php';	
+
+						$query = "SELECT * FROM categorie GROUP BY categorie_naam";
+
+						$resultaat = mysql_query($query) or die (mysql_error()) ;
+
+						while ($row = mysql_fetch_array($resultaat)) 
+						{
+							echo '<option value="' . $row['categorie_id'] . '">' . $row['categorie_naam'] . '</option>';
+						}
+					?></select><td></tr>
+					<tr><td>Merk:</td><td><select name="merk_id">
+					<?php
+						include 'connect.php';	
+
+						$query = "SELECT * FROM merken GROUP BY merk_naam";
+
+						$resultaat = mysql_query($query) or die (mysql_error()) ;
+
+						while ($row = mysql_fetch_array($resultaat)) 
+						{
+							echo '<option value="' . $row['merk_id'] . '">' . $row['merk_naam'] . '</option>';
+						}
+					?>
+					</select></td></tr>
+					<tr><td>Begin voorraad</td><td><input type="number" min="0" max="99" name="voorraad"/></td></tr>
+					<tr><td>Prijs</td><td><input type="text" maxlength="10"/></td></tr>
+					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
+					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
+				</table>
+				<input type="hidden" name="returnpage" value='admin&action=1&state=1'/>
+			</form>
+		<?php
+		}
+		else if($_GET['state'] == "1")
+		{
+			?>
+			
+			<p>Artikel toegevoegd. <a href="index.php?page=admin">Terugkeren.</a></p>
+			
+			<?php
+		}
 	}
 	else if($_GET['action'] == "3")
 	{
