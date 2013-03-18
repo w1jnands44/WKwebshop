@@ -125,15 +125,15 @@ body
 
 .home_artikel .categorie_afbeelding .afbeelding
 {
-	width:auto;
-	height: auto;
+	width:150px;
+	height: 150px;
 }
 
 .home_artikel .categorie_naam
 {
 
 	text-align: center;
-	font-size: 80px;
+	font-size: 60px;
 	
 	border: solid;
 	border-width: 1px;
@@ -152,11 +152,6 @@ body
 	margin-top: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
-	
-	
-	
-	/*border:solid;
-	border-width: 2px; */
 }
 
 .artikel_zoeken .zoeken
@@ -166,3 +161,88 @@ body
 	/*border:solid;
 	border-width: 2px;*/
 }
+
+/*
+.home_artikel .product_categorie
+{
+	text-align: right;
+	
+	width:100px;
+	height: 25px;
+	float: right;
+
+	border:solid;
+	border-width: 1px;
+
+	margin-top: 2px;
+	margin-right: 2px;
+
+}*/
+
+.home_artikel .product_naam
+{
+	  	
+	text-align: center;
+	font-size: 30px;
+	
+	border: solid;
+	border-width: 1px;
+
+	height: 40px;
+	width: auto;
+
+	margin-top: -120px;
+	
+	margin-left: 125px;
+	margin-right: 10px;
+}
+
+
+.home_artikel .product_afbeelding
+{
+
+	text-align: center;
+
+	border: solid;
+	border-width: 1px;
+
+	height: 150px;
+	width: 150px;
+
+	margin-top: 25px;
+	margin-left: 10px;
+}
+
+.home_artikel .product_beschrijving
+{
+
+text-align: center;
+
+	width: 200px;
+	height: auto;
+
+	border:solid;
+	border-width: 1px;
+
+	margin-top: 2px;
+
+	margin-left: auto ;
+  	margin-right: auto ;
+
+}
+
+.home_artikel .product_prijs
+{
+	text-align: right;
+	
+	width:100px;
+	height: 25px;
+	float: right;
+
+	border:solid;
+	border-width: 1px;
+
+	margin-top: 90px;
+	margin-right: 2px;
+
+} 

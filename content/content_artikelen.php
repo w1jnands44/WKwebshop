@@ -8,8 +8,6 @@
 						</td>
 						<td>
 							<input type="radio" name="keuze" value="naam">naam<br>
-							<input type="radio" name="keuze" value="categorie">categorie<br>
-							<input type="radio" name="keuze" value="prijs">titel<br>
 							<input type="radio" name="keuze" value="beschrijving">beschrijving<br>
 							<input type="radio" name="keuze" value="prijs">prijs<br>
 						</td>
@@ -27,11 +25,12 @@
 <hr />
 
 <?php
+	include 'connect.php';	
+
 	if(!isset($_POST["zoeken"]))
 	{
-		include 'connect.php';	
-
-		$query = "SELECT * FROM catagorie GROUP BY catagorie_id";
+		
+		$query = "SELECT * FROM categorie GROUP BY categorie_id";
 
 		$resultaat = mysql_query($query) or die (mysql_error()) ;
 
@@ -46,14 +45,70 @@
 				<div class="home_artikel">
 
 					<div class="categorie_afbeelding">
-						<img class="afbeelding" alt="test" src="<?php echo $key['catagorie_image']; ?>"/>
+						<img class="afbeelding" alt="test" src="<?php echo $key['categorie_image']; ?>"/>
 					</div>
 
 					<div class="categorie_naam">
-						<b> <?php echo $key['catagorie_naam']; ?></b>
+						<b> <?php echo $key['categorie_naam']; ?></b>
 					</div>
 				</div> 
 			<?php 
 		}
+	}
+
+	elseif(isset($_POST['keuze']) && strlen($_POST['searchbar']) != 0)
+	{
+		if($_POST['keuze'] == 'naam')
+		{
+			$query = "SELECT * FROM artikelen WHERE artikel_naam LIKE '%" . $_POST['searchbar'] . "%'";
+		}
+		elseif($_POST['keuze'] == 'beschrijving')
+		{
+			$query = "SELECT * FROM artikelen WHERE artikel_beschrijving LIKE '%" . $_POST['searchbar'] . "%'";
+		}
+		elseif($_POST['keuze'] == 'prijs')
+		{
+			$query = "SELECT * FROM artikelen WHERE artikel_prijs LIKE '%" . $_POST['searchbar'] . "%'";
+		}
+		
+		echo $query;
+
+
+		$resultaat = mysql_query($query) or die (mysql_error()) ;
+
+		while ($row = mysql_fetch_array($resultaat)) 
+		{
+			$data[] = $row;
+		}
+
+		foreach ($data as $key) 
+		{
+			?>
+				<div class="home_artikel">
+
+					<div class="product_afbeelding">
+						<img class="afbeelding" alt="test" src="<?php echo $key['artikel_image']; ?>"/>
+					</div>
+
+					<div class="product_naam">
+						<b> <?php echo $key['artikel_naam']; ?></b>
+					</div>
+					<div class="product_beschrijving">
+						<b> <?php echo $key['artikel_beschrijving']; ?></b>
+					</div>
+					<div class="product_prijs">
+						<b> <?php echo $key['artikel_prijs']; ?></b>
+					</div>
+				</div> 
+							
+			
+			<?php 
+		}
+
+
+	}
+	else
+	{
+		echo "Er is geen keuze aangegeven.";
 	}
 ?>
