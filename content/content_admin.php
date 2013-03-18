@@ -69,8 +69,8 @@
 			<h2>Een merk toevoegen</h2>
 			<form action='additem.php?itemid=1' method="POST" enctype="multipart/form-data">
 				<table border="0px;">
-					<tr><td>Naam:</td><td><input type="text" name="naam"/></td></tr>
-					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving"/></td></tr>
+					<tr><td>Naam:</td><td><input type="text" name="naam" maxlength="30"/></td></tr>
+					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving" maxlength="500"/></td></tr>
 					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
 					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
 				</table>
@@ -95,8 +95,8 @@
 			<h2>Een categorie toevoegen</h2>
 			<form action='additem.php?itemid=2' method="POST" enctype="multipart/form-data">
 				<table border="0px;">
-					<tr><td>Naam:</td><td><input type="text" name="naam"/></td></tr>
-					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving"/></td></tr>
+					<tr><td>Naam:</td><td><input type="text" name="naam" maxlength="30"/></td></tr>
+					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving" maxlength="500"/></td></tr>
 					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
 					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
 				</table>
