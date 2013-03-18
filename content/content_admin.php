@@ -19,7 +19,7 @@
 				<td><a href='index.php?page=admin&action=3'>Een merk toevoegen</a></td>
 			</tr>
 			<tr>
-				<td><a href='index.php?page=admin&action=4'>Een catagorie toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=4'>Een categorie toevoegen</a></td>
 			</tr>
 		</table>
 		
@@ -69,8 +69,8 @@
 			<h2>Een merk toevoegen</h2>
 			<form action='additem.php?itemid=1' method="POST" enctype="multipart/form-data">
 				<table border="0px;">
-					<tr><td>Naam:</td><td><input type="text" name="merknaam"/></td></tr>
-					<tr><td>Beschrijving:</td><td><input type="text" name="merkbeschrijving"/></td></tr>
+					<tr><td>Naam:</td><td><input type="text" name="naam"/></td></tr>
+					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving"/></td></tr>
 					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
 					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Registreer"/></td></tr>
 				</table>
@@ -89,7 +89,29 @@
 	}
 	else if($_GET['action'] == "4")
 	{
-		echo '<p>Hier komt "catagorie toevoegen". <a href="index.php?page=admin">Terugkeren.</a></p>';
+		if(!isset($_GET['state']) || $_GET['state'] == "0")
+		{
+			?>
+			<h2>Een categorie toevoegen</h2>
+			<form action='additem.php?itemid=2' method="POST" enctype="multipart/form-data">
+				<table border="0px;">
+					<tr><td>Naam:</td><td><input type="text" name="naam"/></td></tr>
+					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving"/></td></tr>
+					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
+					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Registreer"/></td></tr>
+				</table>
+				<input type="hidden" name="returnpage" value='admin&action=4&state=1'/>
+			</form>
+			<?php
+		}		
+		else if($_GET['state'] == "1")
+		{
+			?>
+			
+			<p>Categorie toegevoegd. <a href="index.php?page=admin">Terugkeren.</a></p>
+			
+			<?php
+		}
 	}
 	
 /*
