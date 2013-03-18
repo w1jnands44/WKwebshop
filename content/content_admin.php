@@ -72,7 +72,7 @@
 					<tr><td>Naam:</td><td><input type="text" name="naam"/></td></tr>
 					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving"/></td></tr>
 					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
-					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Registreer"/></td></tr>
+					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
 				</table>
 				<input type="hidden" name="returnpage" value='admin&action=3&state=1'/>
 			</form>
@@ -98,7 +98,7 @@
 					<tr><td>Naam:</td><td><input type="text" name="naam"/></td></tr>
 					<tr><td>Beschrijving:</td><td><input type="text" name="beschrijving"/></td></tr>
 					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
-					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Registreer"/></td></tr>
+					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
 				</table>
 				<input type="hidden" name="returnpage" value='admin&action=4&state=1'/>
 			</form>
