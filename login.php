@@ -18,6 +18,7 @@
 			$db_user_name = $data['user_name'];
 			$db_password = $data['user_password'];
 			$db_acceslevel = $data['user_acceslevel'];
+			$db_image = $data['user_image'];
 		}
 	
 		if (empty($db_user_name)) {
@@ -40,7 +41,18 @@
 
 				$_SESSION['user_id'] = $db_user_id;
 				$_SESSION['user_name'] = $db_user_name;
+				$_SESSION['user_password'] = $db_password;
 				$_SESSION['user_acceslevel'] = $db_acceslevel;
+				
+				if($db_image == null)
+				{
+					$_SESSION['user_image'] = "images/layout/default_user_image.png";
+				}
+				else
+				{
+					$_SESSION['user_image'] = $db_image;
+				}
+
 				$_SESSION['logged'] = true;
 				header("Location: " . $_POST['returnpage']);
 			}

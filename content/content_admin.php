@@ -41,6 +41,7 @@
 						<option value="2">--no-data--</option>
 						<option value="3">Administrator</option>
 					</select></td></tr>
+					<tr><td>Avatar:</td><td><input type="file" name="image"/></td></tr>
 					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
 				</table>
 				<input type="hidden" name="returnpage" value='admin&action=1&state=1'/>

@@ -60,7 +60,7 @@
 						{
 							if(!isset($_SESSION['klant_voornaam']))
 							{
-								echo '<div class="login_message"><p style="text-align:center;">Welkom <a href="index.php?page=details">' . $_SESSION['user_name'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
+								echo '<div class="login_message"><img style="width:50px;height:50px;float:left;" alt="can\'t load image." src="' . $_SESSION['user_image'] . '"/><p style="text-align:center;">Welkom <a href="index.php?page=details">' . $_SESSION['user_name'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
 							}
 							else
 							{

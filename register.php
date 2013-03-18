@@ -12,26 +12,48 @@ if(isset($_POST['voornaam']))
 
 	$klant_id = mysql_insert_id();
 	
+	if(!$_POST['image'] == null)
+	{
+		$extension = end(explode(".", $_FILES['image']['name']));
+
+		$target_path = "images/user/" . $_POST['user_name'] . "." . $extension;
+		
+		include 'save_image.php';
+	}
+	else
+	{
+		$target_path = null;
+	}
+	
 	include 'encrypt.php';
 
 	$password = encrypt($_POST['password'], $_POST['username']);
 
-	$query = 'INSERT INTO users (`klant_id`, `user_name`, `user_password`, `user_acceslevel`) VALUES ("' . $klant_id . '", "' . $_POST['username'] . '", "' . $password. '", "' . $_POST['acceslevel'] . '")';
-
-	echo $query;
+	$query = 'INSERT INTO users (`klant_id`, `user_name`, `user_password`, `user_acceslevel`, `user_image`) VALUES ("' . $klant_id . '", "' . $_POST['username'] . '", "' . $password. '", "' . $_POST['acceslevel'] . '", "' . $target_path . '")';
 
 	mysql_query($query);
 }
 else
 {
+	if(!$_POST['image'] == null)
+	{
+		$extension = end(explode(".", $_FILES['image']['name']));
+
+		$target_path = "images/user/" . $_POST['user_name'] . "." . $extension;
+		
+		include 'save_image.php';
+	}
+	else
+	{
+		$target_path = null;
+	}
+	
 	include 'encrypt.php';
 
 	$password = encrypt($_POST['password'], $_POST['username']);
 
-	$query = 'INSERT INTO users (`user_name`, `user_password`, `user_acceslevel`) VALUES ("' . $_POST['username'] . '", "' . $password. '", "' . $_POST['acceslevel'] . '")';
-
-	echo $query;
-
+	$query = 'INSERT INTO users (`user_name`, `user_password`, `user_acceslevel`, `user_image`) VALUES ("' . $_POST['username'] . '", "' . $password. '", "' . $_POST['acceslevel'] . '", "' . $target_path . '")';
+	
 	mysql_query($query);
 }
 
