@@ -60,11 +60,27 @@
 						{
 							if(!isset($_SESSION['klant_voornaam']))
 							{
-								echo '<div class="login_message"><img style="width:50px;height:50px;float:left;" alt="can\'t load image." src="' . $_SESSION['user_image'] . '"/><p style="text-align:center;">Welkom <a href="index.php?page=details">' . $_SESSION['user_name'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
+							?>
+								<div class="login_message">
+									<div class="user_info_holder">
+										<a href="index.php?page=details&action=2"><img class="user_image" alt="can\'t load image." src="<?php echo $_SESSION['user_image']; ?>"/></a>
+										<div style="width:70px;height:45px;float:left;">
+											<span style="margin-top:25px;margin-left:10px;float:left;font-size:16px;"><a href="logout.php?returnpage=<?php echo $_SERVER['PHP_SELF']; ?>">Uitloggen.</a></span>
+											<span style="margin-top:4px;margin-left:10px;float:left;font-size:32px;"><a href="index.php?page=details"><?php echo $_SESSION['user_name']; ?></a></span>
+										</div>
+									</div>
+								</div>
+							<?php
 							}
 							else
 							{
-								echo '<div class="login_message"><p style="text-align:center;">Welkom <a href="index.php?page=details">' . $_SESSION['klant_voornaam'] . " " . $_SESSION['klant_achternaam'] . '</a>.<a href="logout.php?returnpage=' . $_SERVER['PHP_SELF'] . '">Uitloggen.</a></p></div>';
+							?>
+								<div class="login_message">
+									<img class="user_image" alt="can\'t load image." src="<?php echo $_SESSION['user_image']; ?>"/>
+									<p style="text-align:center;"><a href="index.php?page=details"><?php echo $_SESSION['klant_voornaam'] . " " . $_SESSION['klant_achternaam']; ?></a>.
+									<a href="logout.php?returnpage=<?php echo $_SERVER['PHP_SELF']; ?>">Uitloggen.</a></p>
+								</div>
+							<?php
 							}
 						}
 					?>

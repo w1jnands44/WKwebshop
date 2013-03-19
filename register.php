@@ -12,13 +12,10 @@ if(isset($_POST['voornaam']))
 
 	$klant_id = mysql_insert_id();
 	
-	if(!$_POST['image'] == null)
+	if($_FILES['image']['name'] != null)
 	{
-		$extension = end(explode(".", $_FILES['image']['name']));
-
-		$target_path = "images/user/" . $_POST['user_name'] . "." . $extension;
-		
 		include 'save_image.php';
+		$target_path = save_image("images/user/" . $_POST['user_name']);
 	}
 	else
 	{
@@ -34,14 +31,11 @@ if(isset($_POST['voornaam']))
 	mysql_query($query);
 }
 else
-{
-	if(!$_POST['image'] == null)
+{	
+	if($_FILES['image']['name'] != null)
 	{
-		$extension = end(explode(".", $_FILES['image']['name']));
-
-		$target_path = "images/user/" . $_POST['user_name'] . "." . $extension;
-		
 		include 'save_image.php';
+		$target_path = save_image("images/user/" . $_POST['user_name']);
 	}
 	else
 	{

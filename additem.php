@@ -1,7 +1,7 @@
 <?php
 	if(!isset($_SESSION['logged']) || $_SESSION['user_acceslevel'] < 3)
 	{
-		header("Location: index.php?page=home");
+		//header("Location: index.php?page=home");
 	}
 	
 	if(!isset($_GET['itemid']) || $_GET['itemid'] == "0")
@@ -10,7 +10,7 @@
 
 		$naam = ucfirst(strtolower($_POST['naam']));
 		
-		if(isset($_POST['image']))
+		if($_FILES['image']['name'] != null)
 		{
 			include 'save_image.php';
 			$target_path = save_image("images/artikel/" . $naam);
@@ -32,13 +32,15 @@
 
 		$naam = ucfirst(strtolower($_POST['naam']));
 		
-		if(isset($_POST['image']))
+		if($_FILES['image']['name'] != null)
 		{
+			echo "wel image";
 			include 'save_image.php';
 			$target_path = save_image("images/merk/" . $naam);
 		}
 		else
 		{
+			echo "niet image";
 			$target_path = null;
 		}
 		
@@ -54,7 +56,7 @@
 
 		$naam = ucfirst(strtolower($_POST['naam']));
 		
-		if(isset($_POST['image']))
+		if($_FILES['image']['name'] != null)
 		{
 			include 'save_image.php';
 			$target_path = save_image("images/categorie/" . $naam);

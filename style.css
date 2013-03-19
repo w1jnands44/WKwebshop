@@ -74,8 +74,35 @@ body
 {
 	background-color:black;
 	width:300px;
-	height:100px;
+	height:130px;
 	float:right;
+}
+
+.login_box .login_message .user_image
+{
+	width:90px;
+	height:90px;
+	float:left;
+	margin-top:10px;
+	margin-left:10px;
+}
+
+.login_box .login_message .user_info_holder
+{
+	margin-top:10px;
+	margin-left:10px;
+}
+
+.login_box .login_message .user_info_holder a
+{
+	text-decoration:none;
+	color: black;
+}
+
+.login_box .login_message .user_info_holder a:hover
+{
+	text-decoration:none;
+	color: lightblue;
 }
 
 /*.login_box .Userinfolink
@@ -90,7 +117,7 @@ body
 {
 	background-color:white;
 	width:300px;
-	height:100px;
+	height:130px;
 	float:right;
 	/*border: 3px blue solid;*/
 }
@@ -99,7 +126,7 @@ body
 {
 	background-color:white;
 	width:300px;
-	height:100px;
+	height:130px;
 	float:right;
 }
 

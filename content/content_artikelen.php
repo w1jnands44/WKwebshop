@@ -40,11 +40,11 @@
 				<div class="home_artikel">
 
 					<div class="categorie_afbeelding">
-						<img class="afbeelding" alt="test" src="<?php echo $key['categorie_image']; ?>"/>
+						<img class="afbeelding" alt="test" src="<?php echo $row['categorie_image']; ?>"/>
 					</div>
 
 					<div class="categorie_naam">
-						<b> <?php echo $key['categorie_naam']; ?></b>
+						<b> <?php echo $row['categorie_naam']; ?></b>
 					</div>
 				</div> 
 			<?php 

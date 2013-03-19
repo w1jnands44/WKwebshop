@@ -50,15 +50,56 @@
 			
 				mysql_query($query);
 
-				echo '<p>Wachtwoord gewijzigd. <a href="index.php?page=details">Terugkeren.</a></p>';
+				echo '<p>Wachtwoord veranderd. <a href="index.php?page=details">Terugkeren.</a></p>';
 			}
 		}
 	}
 	else if($_GET['action'] == "2")
 	{
+		if(!isset($_GET['state']) || $_GET['state'] == "0")
+		{
 		?>
-		
+			<h3>Avatar wijzigen</h3>
+			
+			<form action='index.php?page=details&action=2&state=1' method="POST" enctype="multipart/form-data">
+				<table border="0px;">
+					<tr><td>Huide avatar:</td><td><img style="width:150px;height:150px;" alt="can\'t load image." src="<?php echo $_SESSION['user_image']; ?>"/></td></tr>
+					<tr><td>Nieuwe avatar:</td><td><input type="file" name="image"/></td></tr>
+					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Aanpassen"/></td></tr>
+				</table>
+			</form>
+			
+			<a href="index.php?page=details">Annuleren</a>
 		<?php
+		}
+		else if($_GET['state'] == "1")
+		{
+			if($_FILES['image']['name'] != null)
+			{
+				include 'save_image.php';
+				$target_path = save_image("images/user/" . $_SESSION['user_name']);
+				
+				$_SESSION['user_image'] = $target_path;
+			}
+			else
+			{
+				$target_path = null;
+				
+				$_SESSION['user_image'] = "images/layout/default_image_user.png";
+			}
+			
+			include 'connect.php';
+			
+			$query = 'UPDATE users SET `user_image` = ' . $target_path . ' WHERE user_id = ' . $_SESSION['user_id'];
+			
+			mysql_query($query);
+			
+			header("Location: index.php?page=details&action=2&state=2");
+		}
+		else if($_GET['state'] == "2")
+		{
+			echo '<p>Avatar aangepast. <a href="index.php?page=details">Terugkeren.</a></p>';
+		}
 	}
 ?>
 
