@@ -10,11 +10,9 @@
 
 		$naam = ucfirst(strtolower($_POST['naam']));
 		
-		$extension = end(explode(".", $_FILES['image']['name']));
-
-		$target_path = "images/artikel/" . $naam . "." . $extension;
-		
 		include 'save_image.php';
+		
+		$target_path = save_image("images/artikel/" . $naam);
 		
 		$query = 'INSERT INTO artikelen (`merk_id`, `categorie_id`, `artikel_naam`, `artikel_voorraad`, `artikel_beschrijving`, `artikel_prijs`, `artikel_image`) VALUES ("' . $_POST['merk_id'] . '", "' . $_POST['categorie_id'] . '", "' . $naam . '", "' . $_POST['voorraad'] . '", "' . $_POST['beschrijving'] . '", "' . $_POST['prijs'] . '", "' . $target_path . '")';
 
@@ -28,14 +26,12 @@
 
 		$naam = ucfirst(strtolower($_POST['naam']));
 		
-		$extension = end(explode(".", $_FILES['image']['name']));
-
-		$target_path = "images/merk/" . $naam . "." . $extension;
-		
 		include 'save_image.php';
 		
+		$target_path = save_image("images/merk/" . $naam);
+		
 		$query = 'INSERT INTO merken (`merk_naam`, `merk_beschrijving`, `merk_image`) VALUES ("' . $naam . '", "' . $_POST['beschrijving'] . '", "' . $target_path . '")';
-
+		
 		mysql_query($query);
 
 		header("Location: index.php?page=" . $_POST['returnpage']);
@@ -46,11 +42,9 @@
 
 		$naam = ucfirst(strtolower($_POST['naam']));
 		
-		$extension = end(explode(".", $_FILES['image']['name']));
-
-		$target_path = "images/categorie/" . $naam . "." . $extension;
-		
 		include 'save_image.php';
+		
+		$target_path = save_image("images/categorie/" . $naam);
 		
 		$query = 'INSERT INTO categorie (`categorie_naam`, `categorie_beschrijving`, `categorie_image`) VALUES ("' . $naam . '", "' . $_POST['beschrijving'] . '", "' . $target_path . '")';
 
