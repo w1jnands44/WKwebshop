@@ -15,12 +15,12 @@
 		<div class="header">
 		</div>
 		<div class="menu">
-			<a href="?page=home">Home</a>|
-			<a href="?page=artikelen">Artikelen</a>
+			<a href="?page=home"><div class="menu_txt">Home</div></a>
+			<a href="?page=artikelen"><div class="menu_txt">Artikelen</div></a>
 			<?php
 				if(isset($_SESSION['logged']) && $_SESSION['user_acceslevel'] >= 3)
 				{
-					echo '|<a href="?page=admin">Admin Panel</a>';
+					echo '<a href="?page=admin"><div class="menu_txt">Admin Panel</div></a>';
 				}
 			?>
 		</div>

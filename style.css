@@ -16,16 +16,31 @@ body
 
 .menu a
 {
+	background-image: url("images/layout/menu_btn.png");
+	width:128px;
+	height:40px;
+	float:left;
 	text-decoration: none;
+}
+
+.menu_txt
+{
+	margin-top:6px;
 	font-size:20px;
-	color:black;
+	font-weight:bold;
+	color: black;
 }
 
 .menu a:hover
 {
-	text-decoration: underline;
+	/*text-decoration: underline;
 	color:white;
-	font-size:22px;
+	font-size:22px;*/
+	background-image: url("images/layout/menu_btn_hover.png");
+	width:128px;
+	height:40px;
+	float:left;
+	text-decoration: none;
 }
 
 .header
@@ -33,8 +48,8 @@ body
 	width:1000px;
 	height:150px;
 	margin:0px auto;
-
-	background-image: url('images/layout/header.JPG');
+	/*background-image: url('images/layout/header.JPG');*/
+	background-image: url('images/layout/header2.png');
 }
 
 .content
