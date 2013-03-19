@@ -96,11 +96,11 @@
 					?>
 					</select></td></tr>
 					<tr><td>Begin voorraad</td><td><input type="number" min="0" max="99" name="voorraad"/></td></tr>
-					<tr><td>Prijs</td><td><input type="text" maxlength="10"/></td></tr>
+					<tr><td>Prijs</td><td><input type="text" maxlength="10" name="prijs"/></td></tr>
 					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
 					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
 				</table>
-				<input type="hidden" name="returnpage" value='admin&action=1&state=1'/>
+				<input type="hidden" name="returnpage" value='admin&action=2&state=1'/>
 			</form>
 		<?php
 		}

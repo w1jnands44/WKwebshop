@@ -46,7 +46,7 @@
 				
 				if($db_image == null)
 				{
-					$_SESSION['user_image'] = "images/layout/default_user_image.png";
+					$_SESSION['user_image'] = "images/layout/default_image_user.png";
 				}
 				else
 				{

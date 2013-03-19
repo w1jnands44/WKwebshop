@@ -36,11 +36,6 @@
 
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
-			$data[] = $row;
-		}
-
-		foreach ($data as $key) 
-		{
 			?>
 				<div class="home_artikel">
 
@@ -70,41 +65,38 @@
 		{
 			$query = "SELECT * FROM artikelen WHERE artikel_prijs LIKE '%" . $_POST['searchbar'] . "%'";
 		}
-		
-		echo $query;
-
 
 		$resultaat = mysql_query($query) or die (mysql_error()) ;
-
+		
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
-			$data[] = $row;
-		}
-
-		foreach ($data as $key) 
-		{
+			if($row['artikel_image'] == null)
+			{
+				$image = "images/layout/default_image_product.png";
+			}
+			else
+			{
+				$image = $row['artikel_image'];
+			}
 			?>
 				<div class="home_artikel">
 
 					<div class="product_afbeelding">
-						<img class="afbeelding" alt="test" src="<?php echo $key['artikel_image']; ?>"/>
+						<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
 					</div>
 
 					<div class="product_naam">
-						<b> <?php echo $key['artikel_naam']; ?></b>
+						<b> <?php echo $row['artikel_naam']; ?></b>
 					</div>
 					<div class="product_beschrijving">
-						<b> <?php echo $key['artikel_beschrijving']; ?></b>
+						<b> <?php echo $row['artikel_beschrijving']; ?></b>
 					</div>
 					<div class="product_prijs">
-						<b> <?php echo $key['artikel_prijs']; ?></b>
+						<b> <?php echo $row['artikel_prijs']; ?></b>
 					</div>
 				</div> 
-							
-			
 			<?php 
 		}
-
 
 	}
 	else
