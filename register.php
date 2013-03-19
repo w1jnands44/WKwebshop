@@ -15,7 +15,7 @@ if(isset($_POST['voornaam']))
 	if($_FILES['image']['name'] != null)
 	{
 		include 'save_image.php';
-		$target_path = save_image("images/user/" . $_POST['user_name']);
+		$target_path = save_image("images/user/" . $_POST['username']);
 	}
 	else
 	{
@@ -35,7 +35,7 @@ else
 	if($_FILES['image']['name'] != null)
 	{
 		include 'save_image.php';
-		$target_path = save_image("images/user/" . $_POST['user_name']);
+		$target_path = save_image("images/user/" . $_POST['username']);
 	}
 	else
 	{

@@ -83,14 +83,14 @@
 			}
 			else
 			{
-				$target_path = null;
+				$target_path = "null";
 				
 				$_SESSION['user_image'] = "images/layout/default_image_user.png";
 			}
 			
 			include 'connect.php';
 			
-			$query = 'UPDATE users SET `user_image` = ' . $target_path . ' WHERE user_id = ' . $_SESSION['user_id'];
+			$query = 'UPDATE users SET `user_image` = "' . $target_path . '" WHERE user_id = ' . $_SESSION['user_id'];
 			
 			mysql_query($query);
 			

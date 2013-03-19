@@ -1,6 +1,6 @@
-<form action="register.php" method="POST">
+<form action="register.php" method="POST" enctype="multipart/form-data">
 	<table border="0px;">
-		<tr><td>Gebruikersnaam:</td><td><input type="text" name="username" maxlength="16"/></td></tr>
+		<tr><td>Gebruikersnaam:</td><td><input type="text" name="username" maxlength="12"/></td></tr>
 		<tr><td>Wachtwoord:</td><td><input type="password" name="password" maxlength="30"/></td></tr>
 		<tr><td>Voornaam:</td><td><input type="text" name="voornaam" maxlength="20"/></td></tr>
 		<tr><td>Achternaam:</td><td><input type="text" name="achternaam" maxlength="30"/></td></tr>

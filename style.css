@@ -80,17 +80,18 @@ body
 
 .login_box .login_message .user_image
 {
-	width:90px;
-	height:90px;
+	width:60px;
+	height:60px;
 	float:left;
-	margin-top:10px;
-	margin-left:10px;
+	margin-top:20px;
+	padding:1px;
+	border:1px solid lightblue;
 }
 
 .login_box .login_message .user_info_holder
 {
 	margin-top:10px;
-	margin-left:10px;
+	margin-left:9px;
 }
 
 .login_box .login_message .user_info_holder a
