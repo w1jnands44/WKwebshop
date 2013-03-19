@@ -33,8 +33,8 @@
 			<h2>Een gebruiker toevoegen</h2>
 			<form action='register.php' method="POST">
 				<table border="0px;">
-					<tr><td>Gebruikersnaam:</td><td><input type="text" name="username" maxlenght="16"/></td></tr>
-					<tr><td>Wachtwoord:</td><td><input type="password" name="password" maxlenght="30"/></td></tr>
+					<tr><td>Gebruikersnaam:</td><td><input type="text" name="username" maxlength="16"/></td></tr>
+					<tr><td>Wachtwoord:</td><td><input type="password" name="password" maxlength="30"/></td></tr>
 					<tr><td colspan="2" style="text-align:center;"><select name='acceslevel'>
 						<option value="0">Geen toegang</option>
 						<option value="1">Klant</option>
