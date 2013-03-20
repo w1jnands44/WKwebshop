@@ -27,7 +27,7 @@
 					}
 				}
 			?>
-			<a href="?page=winkelwagen" style="float:right;"><img src="images/layout/winkelwagen.png" style="float:left;width:40px;height:40px;"/><div class="menu_txt" style="font-size:14px;margin-top:11px;">Winkelwagen</div></a>
+			<a href="?page=winkelwagen" style="float:right;"><img src="images/layout/cart.jpg" style="float:left;width:40px;height:40px;"/><div class="menu_txt" style="font-size:14px;margin-top:11px;">Winkelwagen</div></a>
 		</div>
 		<div class="content_holder">
 			<div class="content">
