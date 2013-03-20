@@ -8,9 +8,9 @@
 	{
 		?>
 		<table>
-			<tr><td>Gebruikersnaam:</td><td><?php echo $_SESSION['user_name'] ?></td></tr>
 			<tr><td colspan="2" style="text-align:center;"><a href="index.php?page=details&action=1">Wachtwoord wijzigen?</a></td></tr>
 			<tr><td colspan="2" style="text-align:center;"><a href="index.php?page=details&action=2">Avatar wijzigen?</a></td></tr>
+			<tr><td colspan="2" style="text-align:center;"><a href="index.php?page=winkelwagen">Naar winkelwagen gaan.</a></td></tr>
 		</table>
 		<?php
 	}
@@ -83,7 +83,7 @@
 			}
 			else
 			{
-				$target_path = "null";
+				$target_path = null;
 				
 				$_SESSION['user_image'] = "images/layout/default_image_user.png";
 			}

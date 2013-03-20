@@ -1,7 +1,7 @@
 <?php
 	if(!isset($_SESSION['logged']) || $_SESSION['user_acceslevel'] < 3)
 	{
-		//header("Location: index.php?page=home");
+		header("Location: index.php?page=home");
 	}
 	
 	if(!isset($_GET['itemid']) || $_GET['itemid'] == "0")

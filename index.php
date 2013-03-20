@@ -18,11 +18,16 @@
 			<a href="?page=home"><div class="menu_txt">Home</div></a>
 			<a href="?page=artikelen"><div class="menu_txt">Artikelen</div></a>
 			<?php
-				if(isset($_SESSION['logged']) && $_SESSION['user_acceslevel'] >= 3)
+				if(isset($_SESSION['logged']))
 				{
-					echo '<a href="?page=admin"><div class="menu_txt">Admin Panel</div></a>';
+					echo '<a href="?page=details"><div class="menu_txt">Account</div></a>';
+					if($_SESSION['user_acceslevel'] >= 3)
+					{
+						echo '<a href="?page=admin"><div class="menu_txt">Admin Panel</div></a>';
+					}
 				}
 			?>
+			<a href="?page=winkelwagen" style="float:right;"><img src="images/layout/winkelwagen.png" style="float:left;width:40px;height:40px;"/><div class="menu_txt" style="font-size:14px;margin-top:11px;">Winkelwagen</div></a>
 		</div>
 		<div class="content_holder">
 			<div class="content">

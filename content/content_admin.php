@@ -10,16 +10,19 @@
 		
 		<table>
 			<tr>
-				<td><a href='index.php?page=admin&action=1'>Een gebruiker toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=1'>Een gebruiker toevoegen.</a></td>
 			</tr>
 			<tr>
-				<td><a href='index.php?page=admin&action=2'>Een artikel toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=2'>Een artikel toevoegen.</a></td>
 			</tr>
 			<tr>
-				<td><a href='index.php?page=admin&action=3'>Een merk toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=3'>Een merk toevoegen.</a></td>
 			</tr>
 			<tr>
-				<td><a href='index.php?page=admin&action=4'>Een categorie toevoegen</a></td>
+				<td><a href='index.php?page=admin&action=4'>Een categorie toevoegen.</a></td>
+			</tr>
+			<tr>
+				<td><a href='index.php?page=admin&action=5'>Overzicht van alle gebruikers.</a></td>
 			</tr>
 		</table>
 		
@@ -165,8 +168,46 @@
 			<?php
 		}
 	}
-	else if($get['action'] == "5")
+	else if($_GET['action'] == "5")
 	{
-		echo "Nog geen content...";
+		include 'connect.php';
+		
+		$query = "SELECT * FROM users GROUP BY user_name";
+
+		$resultaat = mysql_query($query) or die (mysql_error()) ;
+		
+		echo '<table style="border-collapse:collapse;font-size:18px;font-weight:bold;text-align:center;"><tr style="border-bottom:1pt solid black;"><td>Avatar</td><td>Username</td></tr>';
+		
+		while ($row = mysql_fetch_array($resultaat)) 
+		{
+			if($row['user_image'] == null || $row['user_image'] == "")
+			{
+				$image = "images/layout/default_image_user.png";
+			}
+			else
+			{
+				$image = $row['user_image'];
+			}
+		?>
+			<tr style="border-bottom:1pt solid black;text-align:right;">
+				<td><img style="width:100px;height:100px;border:1px solid lightblue;" alt="Can\'t load image" src="<?php echo $image; ?>"/></td>
+				<td><span style="font-size:22px;font-weight:bold;"><?php echo $row['user_name']; ?></span></td>
+			</tr>
+		<?php 
+		}
+		
+		echo '</table>';
+	}
+	else if($_GET['action'] == "6")
+	{
+		echo "Hier komt alle artikelen bekijken";
+	}
+	else if($_GET['action'] == "7")
+	{
+		echo "Hier komt alle merken bekijken";
+	}
+	else if($_GET['action'] == "8")
+	{
+		echo "Hier komt alle categoriën bekijken";
 	}
 ?>
