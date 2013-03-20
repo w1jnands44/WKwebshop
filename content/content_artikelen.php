@@ -60,41 +60,41 @@
 
 			$resultaat = mysql_query($query) or die (mysql_error()) ;
 					
-				while ($row = mysql_fetch_array($resultaat)) 
+			while ($row = mysql_fetch_array($resultaat)) 
+			{
+				if($row['artikel_image'] == null || $row['artikel_image'] == "")
 				{
-					if($row['artikel_image'] == null || $row['artikel_image'] == "")
-					{
-						$image = "images/layout/default_image_product.png";
-					}
-					else
-					{
-						$image = $row['artikel_image'];
-					}
-
-					?>
-						<div class="home_artikel">
-
-							<div class="product_afbeelding">
-								<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
-							</div>
-
-							<div class="product_naam">
-								<b> <?php echo $row['artikel_naam']; ?></b>
-							</div>
-							<div class="product_beschrijving">
-								<b> <?php echo $row['artikel_beschrijving']; ?></b>
-							</div>
-							<div class="rechtsonder">
-								<div class="product_prijs">
-									<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
-								</div>
-								<div class="bestelbtn">
-									<input type="submit" value="Toevoegen aan winkelwagen" />
-								</div>
-							</div>
-						</div> 
-					<?php 
+					$image = "images/layout/default_image_product.png";
 				}
+				else
+				{
+					$image = $row['artikel_image'];
+				}
+
+			?>
+				<div class="home_artikel">
+
+					<div class="product_afbeelding">
+						<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
+					</div>
+
+					<div class="product_naam">
+						<b> <?php echo $row['artikel_naam']; ?></b>
+					</div>
+					<div class="product_beschrijving">
+						<b> <?php echo $row['artikel_beschrijving']; ?></b>
+					</div>
+					<div class="rechtsonder">
+						<div class="product_prijs">
+							<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
+						</div>
+						<div class="bestelbtn">
+							<input type="submit" value="Toevoegen aan winkelwagen" />
+						</div>
+					</div>
+				</div> 
+			<?php 
+			}
 		}
 		elseif($_GET["categorie"] == "Desktops")
 		{
