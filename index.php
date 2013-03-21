@@ -44,7 +44,7 @@
 					}
 				?>
 			</div>
-				<div class="side_info">
+			<div class="side_info">
 				<div class="login_box">
 				<?php
 					if(!isset($_SESSION['logged']))
