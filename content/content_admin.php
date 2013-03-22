@@ -24,6 +24,9 @@
 			<tr>
 				<td><a href='index.php?page=admin&action=5'>Overzicht van alle gebruikers.</a></td>
 			</tr>
+			<tr>
+				<td><a href='index.php?page=admin&action=6'>Overzicht van alle artikelen.</a></td>
+			</tr>
 		</table>
 		
 		<?php
@@ -200,7 +203,35 @@
 	}
 	else if($_GET['action'] == "6")
 	{
-		echo "Hier komt alle artikelen bekijken";
+		include 'connect.php';
+		
+		$query = "SELECT * FROM artikelen GROUP BY artikel_naam";
+
+		$resultaat = mysql_query($query) or die (mysql_error()) ;
+		
+		echo '<table style="border-collapse:collapse;font-size:18px;font-weight:bold;text-align:center;"><tr style="border-bottom:1pt solid black;"><td>Afbeelding</td><td>Naam</td><td>Merk</td><td>Categorie</td><td>Voorraad</td><td>Prijs</td></tr>';
+		
+		while ($row = mysql_fetch_array($resultaat)) 
+		{
+			if($row['artikel_image'] == null || $row['artikel_image'] == "")
+			{
+				$image = "images/layout/default_image_product.png";
+			}
+			else
+			{
+				$image = $row['artikel_image'];
+			}
+		?>
+			<tr style="border-bottom:1pt solid black;text-align:right;">
+				<td><img style="width:100px;height:100px;border:1px solid lightblue;" alt="Can\'t load image" src="<?php echo $image; ?>"/></td>
+				<td><span style="font-size:22px;font-weight:bold;"><?php echo $row['artikel_naam']; ?></span></td>
+				<td><span style="font-size:22px;font-weight:bold;"><?php echo $row['artikel_voorraad']; ?></span></td>
+				<td><span style="font-size:22px;font-weight:bold;"><?php echo $row['artikel_prijs']; ?></span></td>
+			</tr>
+		<?php 
+		}
+		
+		echo '</table>';
 	}
 	else if($_GET['action'] == "7")
 	{
