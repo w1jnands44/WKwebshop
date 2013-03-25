@@ -28,9 +28,8 @@
 <?php
 	include 'connect.php';	
 
-	if(!isset($_POST["zoeken"]))
+	if(!isset($_POST["zoeken"]) && !isset($_GET['categorie']))
 	{
-		
 		$query = "SELECT * FROM categorie GROUP BY categorie_id";
 
 		$resultaat = mysql_query($query) or die (mysql_error()) ;
@@ -38,7 +37,7 @@
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
 			?>
-			<form >
+			<form>
 				<div class="home_artikel">
 
 					<div class="categorie_afbeelding">
@@ -53,64 +52,77 @@
 			</form>
 			<?php 
 		}
+	}
 
-		if($_GET["categorie"] == "Notebooks")
+		if(isset($_GET["categorie"]) && !isset($_POST['zoeken']))
 		{
-			$query = 'SELECT * FROM artikelen a, categorie c WHERE a.categorie_id == c.categorie_id AND c.catagorie_naam == ".echo $_GET["categorie"] ?>"';
+			$categorie = $_GET["categorie"];
+
+			if($_GET["categorie"] == "Notebooks")
+			{
+				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
+			}
+			elseif($_GET["categorie"] == "Desktops")
+			{
+				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
+			}
+			elseif($_GET["categorie"] == "Randapparatuur")
+			{
+				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
+			}
+			elseif($_GET["categorie"] == "Componenten")
+			{
+				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
+			}
 
 			$resultaat = mysql_query($query) or die (mysql_error()) ;
 					
-			while ($row = mysql_fetch_array($resultaat)) 
-			{
-				if($row['artikel_image'] == null || $row['artikel_image'] == "")
+				if(mysql_num_rows($resultaat) != 0)
 				{
-					$image = "images/layout/default_image_product.png";
-				}
+					while ($row = mysql_fetch_array($resultaat)) 
+					{
+							if($row['artikel_image'] == null || $row['artikel_image'] == "")
+							{
+								$image = "images/layout/default_image_product.png";
+							}
+							else
+							{
+								$image = $row['artikel_image'];
+							}
+
+							?>
+								<div class="home_artikel">
+
+									<div class="product_afbeelding">
+										<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
+									</div>	
+
+									<div class="product_naam">
+										<b> <?php echo $row['artikel_naam']; ?></b>
+									</div>
+									<div class="product_beschrijving">
+										<b> <?php echo $row['artikel_beschrijving']; ?></b>
+									</div>
+									<div class="rechtsonder">
+										<div class="product_prijs">
+											<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
+										</div>
+										<div class="bestelbtn">
+											<input type="submit" value="Toevoegen aan winkelwagen" />
+										</div>
+									</div>
+								</div> 
+							<?php 
+					}
+				}	
 				else
 				{
-					$image = $row['artikel_image'];
-				}
-
-			?>
-				<div class="home_artikel">
-
-					<div class="product_afbeelding">
-						<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
-					</div>
-
-					<div class="product_naam">
-						<b> <?php echo $row['artikel_naam']; ?></b>
-					</div>
-					<div class="product_beschrijving">
-						<b> <?php echo $row['artikel_beschrijving']; ?></b>
-					</div>
-					<div class="rechtsonder">
-						<div class="product_prijs">
-							<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
-						</div>
-						<div class="bestelbtn">
-							<input type="submit" value="Toevoegen aan winkelwagen" />
-						</div>
-					</div>
-				</div> 
-			<?php 
-			}
+					echo "Er zijn geen producten gevonden.";
+				}	
 		}
-		elseif($_GET["categorie"] == "Desktops")
-		{
-			$query = "";
-		}
-		elseif($_GET["categorie"] == "Randapparatuur")
-		{
-			$query = "";
-		}
-		elseif($_GET["categorie"] == "Componenten")
-		{
-			$query = "";
-		}
-	}
-
-	elseif(isset($_POST['keuze']) && strlen($_POST['searchbar']) != 0)
+	
+		
+	if(isset($_POST['keuze']) && strlen($_POST['searchbar']) != 0)
 	{
 		if($_POST['keuze'] == 'naam')
 		{
@@ -135,7 +147,6 @@
 		{
 			if($_POST['keuze'] == "merk")
 			{
-
 				if($row['merk_image'] == null || $row['merk_image'] == "")
 				{
 					$image = "images/layout/default_image_product.png";
@@ -198,8 +209,8 @@
 			}
 		}
 	}
-	else
-	{
-		echo "Er is geen keuze aangegeven.";
-	}
+		else
+		{
+			echo "Er is geen keuze aangegeven.";
+		}	
 ?>
