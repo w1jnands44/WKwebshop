@@ -54,23 +54,24 @@
 		}
 	}
 
+
 		if(isset($_GET["categorie"]) && !isset($_POST['zoeken']))
 		{
 			$categorie = $_GET["categorie"];
 
-			if($_GET["categorie"] == "Notebooks")
+			if($categorie == "Notebooks")
 			{
 				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
 			}
-			elseif($_GET["categorie"] == "Desktops")
+			elseif($categorie == "Desktops")
 			{
 				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
 			}
-			elseif($_GET["categorie"] == "Randapparatuur")
+			elseif($categorie == "Randapparatuur")
 			{
 				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
 			}
-			elseif($_GET["categorie"] == "Componenten")
+			elseif($categorie == "Componenten")
 			{
 				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
 			}
@@ -117,100 +118,103 @@
 				}	
 				else
 				{
-					echo "Er zijn geen producten gevonden.";
-				}	
-		}
-	
+					echo "Geen producten gevonden";
+				}
+			}
+				
 		
-	if(isset($_POST['keuze']) && strlen($_POST['searchbar']) != 0)
+	if(isset($_POST['keuze']))
 	{
-		if($_POST['keuze'] == 'naam')
+		if(strlen($_POST['searchbar']) != 0)
 		{
-			$query = "SELECT * FROM artikelen WHERE artikel_naam LIKE '%" . $_POST['searchbar'] . "%'";
-		}
-		elseif($_POST['keuze'] == 'beschrijving')
-		{
-			$query = "SELECT * FROM artikelen WHERE artikel_beschrijving LIKE '%" . $_POST['searchbar'] . "%'";
-		}
-		elseif($_POST['keuze'] == 'prijs')
-		{
-			$query = "SELECT * FROM artikelen WHERE artikel_prijs LIKE '%" . $_POST['searchbar'] . "%'";
-		}
-		elseif($_POST['keuze'] == 'merk')
-		{
-			$query = "SELECT * FROM merken WHERE merk_naam LIKE '%" . $_POST['searchbar'] . "%'";
-		}
-
-		$resultaat = mysql_query($query) or die (mysql_error()) ;
-		
-		while ($row = mysql_fetch_array($resultaat)) 
-		{
-			if($_POST['keuze'] == "merk")
+			if($_POST['keuze'] == 'naam')
 			{
-				if($row['merk_image'] == null || $row['merk_image'] == "")
+				$query = "SELECT * FROM artikelen WHERE artikel_naam LIKE '%" . $_POST['searchbar'] . "%'";
+			}
+			elseif($_POST['keuze'] == 'beschrijving')
+			{
+				$query = "SELECT * FROM artikelen WHERE artikel_beschrijving LIKE '%" . $_POST['searchbar'] . "%'";
+			}
+			elseif($_POST['keuze'] == 'prijs')
+			{
+				$query = "SELECT * FROM artikelen WHERE artikel_prijs LIKE '%" . $_POST['searchbar'] . "%'";
+			}
+			elseif($_POST['keuze'] == 'merk')
+			{
+				$query = "SELECT * FROM merken WHERE merk_naam LIKE '%" . $_POST['searchbar'] . "%'";
+			}
+
+			$resultaat = mysql_query($query) or die (mysql_error()) ;
+			
+			while ($row = mysql_fetch_array($resultaat)) 
+			{
+				if($_POST['keuze'] == "merk")
 				{
-					$image = "images/layout/default_image_product.png";
+					if($row['merk_image'] == null || $row['merk_image'] == "")
+					{
+						$image = "images/layout/default_image_product.png";
+					}
+					else
+					{
+						$image = $row['merk_image'];
+					}
+
+					?>
+						<div class="home_artikel">
+
+							<div class="product_afbeelding">
+								<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
+							</div>
+
+							<div class="product_naam">
+								<b> <?php echo $row['merk_naam']; ?></b>
+							</div>
+							<div class="product_beschrijving">
+								<b> <?php echo $row['merk_beschrijving']; ?></b>
+							</div>
+						</div> 
+					<?php 
 				}
 				else
 				{
-					$image = $row['merk_image'];
-				}
+					if($row['artikel_image'] == null || $row['artikel_image'] == "")
+					{
+						$image = "images/layout/default_image_product.png";
+					}
+					else
+					{
+						$image = $row['artikel_image'];
+					}
 
-				?>
-					<div class="home_artikel">
+					?>
+						<div class="home_artikel">
 
-						<div class="product_afbeelding">
-							<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
-						</div>
-
-						<div class="product_naam">
-							<b> <?php echo $row['merk_naam']; ?></b>
-						</div>
-						<div class="product_beschrijving">
-							<b> <?php echo $row['merk_beschrijving']; ?></b>
-						</div>
-					</div> 
-				<?php 
-			}
-			else
-			{
-				if($row['artikel_image'] == null || $row['artikel_image'] == "")
-				{
-					$image = "images/layout/default_image_product.png";
-				}
-				else
-				{
-					$image = $row['artikel_image'];
-				}
-
-				?>
-					<div class="home_artikel">
-
-						<div class="product_afbeelding">
-							<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
-						</div>
-
-						<div class="product_naam">
-							<b> <?php echo $row['artikel_naam']; ?></b>
-						</div>
-						<div class="product_beschrijving">
-							<b> <?php echo $row['artikel_beschrijving']; ?></b>
-						</div>
-						<div class="rechtsonder">
-							<div class="product_prijs">
-								<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
+							<div class="product_afbeelding">
+								<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
 							</div>
-							<div class="bestelbtn">
-								<input type="submit" value="Toevoegen aan winkelwagen" />
+
+							<div class="product_naam">
+								<b> <?php echo $row['artikel_naam']; ?></b>
 							</div>
-						</div>
-					</div> 
-				<?php 
+							<div class="product_beschrijving">
+								<b> <?php echo $row['artikel_beschrijving']; ?></b>
+							</div>
+							<div class="rechtsonder">
+								<div class="product_prijs">
+									<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
+								</div>
+								<div class="bestelbtn">
+									<input type="submit" value="Toevoegen aan winkelwagen" />
+								</div>
+							</div>
+						</div> 
+					<?php 
+				}
 			}
 		}
-	}
 		else
 		{
-			echo "Er is geen keuze aangegeven.";
-		}	
+			echo "Er is niets ingevuld.";
+		}
+	}	
 ?>
