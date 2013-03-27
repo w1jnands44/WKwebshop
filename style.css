@@ -321,3 +321,8 @@ text-align: center;
 	margin-top: 2px;
 	
 } 
+.winkelwagen
+{
+	border: solid;
+	border-width: 2px;
+}

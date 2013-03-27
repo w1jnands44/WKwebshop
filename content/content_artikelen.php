@@ -91,7 +91,10 @@
 								$image = $row['artikel_image'];
 							}
 
+			
 							?>
+
+							<form action="index.php?page=winkelwagen" method="GET">
 								<div class="home_artikel">
 
 									<div class="product_afbeelding">
@@ -109,11 +112,12 @@
 											<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
 										</div>
 										<div class="bestelbtn">
-											<input type="submit" value="Toevoegen aan winkelwagen" />
+											<a href='?page=winkelwagen&artikel_id=<?php echo $row['artikel_id']; ?>'>Toevoegen aan winkelwagen </a>
 										</div>
 									</div>
 								</div> 
-							<?php 
+							</form>
+						<?php 
 					}
 				}	
 				else
