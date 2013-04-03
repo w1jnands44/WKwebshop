@@ -213,7 +213,7 @@
 		
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
-			if($row['artikel_image'] == null || $row['artikel_image'] == "" || $row['user_image'] == "null")
+			if($row['artikel_image'] == null || $row['artikel_image'] == "" || $row['artikel_image'] == "null")
 			{
 				$image = "images/layout/default_image_product.png";
 			}
