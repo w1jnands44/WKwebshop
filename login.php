@@ -44,7 +44,7 @@
 				$_SESSION['user_password'] = $db_password;
 				$_SESSION['user_acceslevel'] = $db_acceslevel;
 				
-				if($db_image == null || $db_image == "")
+				if($db_image == null || $db_image == "" || $db_image == "null")
 				{
 					$_SESSION['user_image'] = "images/layout/default_image_user.png";
 				}

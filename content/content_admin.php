@@ -183,7 +183,7 @@
 		
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
-			if($row['user_image'] == null || $row['user_image'] == "")
+			if($row['user_image'] == null || $row['user_image'] == "" || $row['user_image'] == "null")
 			{
 				$image = "images/layout/default_image_user.png";
 			}
@@ -213,7 +213,7 @@
 		
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
-			if($row['artikel_image'] == null || $row['artikel_image'] == "")
+			if($row['artikel_image'] == null || $row['artikel_image'] == "" || $row['user_image'] == "null")
 			{
 				$image = "images/layout/default_image_product.png";
 			}
