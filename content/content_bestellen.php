@@ -1,4 +1,5 @@
 <?php 
+
 if(!isset($_POST['bestellen']))
 {
 	if(isset($_GET['artikel_id']))
@@ -72,21 +73,21 @@ if(!isset($_POST['bestellen']))
 }
 else
 {
-
-
 	$expire = time()+3600 ;
 	$aantal = $_POST['aantal'];
 	$artikelid = $_GET['artikel_id'];
+	$username = $_SESSION['user_name'];
 
-	setcookie("wkwebshop_artikelid", $artikelid, $expire);
-	setcookie("wkwebshop_artikelaantal", $aantal, $expire);
-
+	if(!isset($_COOKIE["wkwebshop_$username"]))
+	{
+		setcookie("wkwebshop_$username", $artikelid .";". $aantal, $expire);
+	}
+	else
+	{
+		setcookie("wkwebshop_$username", $_COOKIE["wkwebshop_$username"].";". $artikelid .";". $aantal, $expire);
+	}
 	
 
-	print_r($_COOKIE['wkwebshop_artikelid']);
-	echo "<br />";
-	print_r($_COOKIE['wkwebshop_artikelaantal']);
-	
-	
+	header("Location: index.php?page=winkelwagen");
 } 
 ?>
