@@ -1,19 +1,6 @@
-<form>
-		<div class="winkelwagen">
-			<table>
-				<tr>
-					<td>Afbeelding</td>
-					<td>Naam</td>
-					<td>Prijs</td>
-				</tr>
-			</table>
-		</div> 
-	<input type="submit" name="bestellen" value="Bestellen"/>
-</form>
-
 <?php 
-	$id = $_GET['artikel_id'];
-	echo $id;
+	echo 'Er zitten nog geen producten in uw winkelwagen, klik <a href="?page=artikelen">hier</a> om naar een product te zoeken.';
  ?>
+		
 
 

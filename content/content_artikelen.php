@@ -112,7 +112,7 @@
 											<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
 										</div>
 										<div class="bestelbtn">
-											<a href='?page=winkelwagen&artikel_id=<?php echo $row['artikel_id']; ?>'>Toevoegen aan winkelwagen </a>
+											<a href='?page=bestellen&artikel_id=<?php echo $row['artikel_id']; ?>'>Bestellen</a>
 										</div>
 									</div>
 								</div> 
@@ -124,6 +124,11 @@
 				{
 					echo "Geen producten gevonden";
 				}
+			}
+
+			if(isset($_POST['zoeken']) && !isset($_POST['keuze']))
+			{
+				echo 'Er is geen keuze aangegeven';
 			}
 				
 		
@@ -208,7 +213,7 @@
 									<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
 								</div>
 								<div class="bestelbtn">
-									<input type="submit" value="Toevoegen aan winkelwagen" />
+									<a href='?page=bestellen&artikel_id=<?php echo $row['artikel_id']; ?>'>Bestellen</a>
 								</div>
 							</div>
 						</div> 
