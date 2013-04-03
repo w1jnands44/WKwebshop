@@ -1,4 +1,6 @@
 <?php 
+if(!isset($_POST['bestellen']))
+{
 	if(isset($_GET['artikel_id']))
 	{
 		include 'connect.php';
@@ -20,7 +22,7 @@
 				$image = $row['artikel_image'];
 			}
 ?>
-			<form>
+			<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
 				<div class="winkelwagen">
 					<table>
 						<tr>
@@ -67,4 +69,24 @@
 	{
 		echo 'Er zitten nog geen producten in uw winkelwagen, klik <a href="?page=artikelen">hier</a> om naar een product te zoeken.';
 	}
- ?>
+}
+else
+{
+
+
+	$expire = time()+3600 ;
+	$aantal = $_POST['aantal'];
+	$artikelid = $_GET['artikel_id'];
+
+	setcookie("wkwebshop_artikelid", $artikelid, $expire);
+	setcookie("wkwebshop_artikelaantal", $aantal, $expire);
+
+	
+
+	print_r($_COOKIE['wkwebshop_artikelid']);
+	echo "<br />";
+	print_r($_COOKIE['wkwebshop_artikelaantal']);
+	
+	
+} 
+?>

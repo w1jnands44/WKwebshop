@@ -36,16 +36,27 @@
 
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
+
+			if($row['categorie_image'] == null || $row['categorie_image'] == "")
+			{
+				$image = "images/layout/default_image_user.png";
+			}
+			else
+			{
+				$image = $row['categorie_image'];
+			}
+
 			?>
+
 			<form>
 				<div class="home_artikel">
 
 					<div class="categorie_afbeelding">
-						<img class="afbeelding" alt="test" src="<?php echo $row['categorie_image']; ?>"/>
+						<img class="afbeelding" alt="afbeelding" src="<?php echo $image; ?>"/>
 					</div>
 
 					<div class="categorie_naam">
-						<b> <a href='?page=artikelen&categorie=<?php echo $row['categorie_naam']; ?>'> <?php echo $row['categorie_naam']; ?> </a></b>
+						<b> <a href='?page=artikelen&categorie=<?php echo $row['categorie_id']; ?>'> <?php echo $row['categorie_naam']; ?> </a></b>
 						<input type="hidden" value="<?php echo $row['categorie_naam']; ?>" />
 					</div>
 				</div> 
@@ -57,23 +68,18 @@
 
 		if(isset($_GET["categorie"]) && !isset($_POST['zoeken']))
 		{
-			$categorie = $_GET["categorie"];
+			$categorie_id = $_GET["categorie"];
 
-			if($categorie == "Notebooks")
+			$query = "SELECT * FROM categorie WHERE categorie_id = '$categorie_id'";
+
+			$resultaat = mysql_query($query) or die (mysql_error()) ;
+
+			while ($row = mysql_fetch_array($resultaat)) 
 			{
-				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
-			}
-			elseif($categorie == "Desktops")
-			{
-				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
-			}
-			elseif($categorie == "Randapparatuur")
-			{
-				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
-			}
-			elseif($categorie == "Componenten")
-			{
-				$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_naam LIKE '$categorie'";
+				if($categorie_id == $row['categorie_id'])
+				{
+					$query = "SELECT * FROM artikelen a, categorie c WHERE a.categorie_id = c.categorie_id AND c.categorie_id LIKE '$categorie_id'";
+				}
 			}
 
 			$resultaat = mysql_query($query) or die (mysql_error()) ;
@@ -98,7 +104,7 @@
 								<div class="home_artikel">
 
 									<div class="product_afbeelding">
-										<img class="afbeelding" alt="test" src="<?php echo $image; ?>"/>
+										<img class="afbeelding" alt="afbeelding" src="<?php echo $image; ?>"/>
 									</div>	
 
 									<div class="product_naam">
