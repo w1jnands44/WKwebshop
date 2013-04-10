@@ -118,7 +118,7 @@
 											<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
 										</div>
 										<div class="bestelbtn">
-											<a href='?page=bestellen&artikel_id=<?php echo $row['artikel_id']; ?>'>Bestellen</a>
+											<a href='?page=bestellen&artikel_id=<?php echo $row['artikel_id']; ?>'>Meer informatie.</a>
 										</div>
 									</div>
 								</div> 

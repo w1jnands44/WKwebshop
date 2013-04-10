@@ -56,10 +56,13 @@
 				$_SESSION['logged'] = true;
 				header("Location: " . $_POST['returnpage']);
 			}
-			
-			echo 'Wachtwoord incorrect';
+			else
+			{
+				echo '<script type="text/javascript">'; 
+				echo 'alert("Het ingevoerde wachtwoord is incorrect")'; 
+				echo '</script>';
+			}
 		}
-		
 		mysql_close($connect);
 	}
 ?>
