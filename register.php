@@ -6,7 +6,7 @@ if(isset($_POST['voornaam']))
 	$voornaam = ucfirst(strtolower($_POST['voornaam']));
 	$achternaam =  ucfirst(strtolower($_POST['achternaam']));
 
-	$query = 'INSERT INTO klanten (`klant_voornaam`, `klant_achternaam`, `klant_email`) VALUES ("' . $voornaam . '", "' . $achternaam . '", "' . $_POST['email'] . '")';
+	$query = 'INSERT INTO klanten (`klant_voornaam`, `klant_achternaam`, `klant_email`, `klant_tel`, `klant_straat`, `klant_plaats`, `klant_postcode`) VALUES ("' . $voornaam . '", "' . $achternaam . '", "' . $_POST['email'] . '", "' . $_POST['telefoon'] . '", "' . $_POST['straat'] . '", "' . $_POST['plaats'] . '", "' . $_POST['postcode'] . '")';
 
 	mysql_query($query);
 

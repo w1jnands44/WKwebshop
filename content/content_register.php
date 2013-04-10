@@ -4,6 +4,10 @@
 		<tr><td>Wachtwoord:</td><td><input type="password" name="password" maxlength="30"/></td></tr>
 		<tr><td>Voornaam:</td><td><input type="text" name="voornaam" maxlength="20"/></td></tr>
 		<tr><td>Achternaam:</td><td><input type="text" name="achternaam" maxlength="30"/></td></tr>
+		<tr><td>Telefoon nummer:</td><td><input type="text" name="telefoon" maxlength="30"/></td></tr>
+		<tr><td>Straat:</td><td><input type="text" name="straat" maxlength="30"/></td></tr>
+		<tr><td>Plaats:</td><td><input type="text" name="plaats" maxlength="30"/></td></tr>
+		<tr><td>Postcode:</td><td><input type="text" name="postcode" maxlength="6"/></td></tr>
 		<tr><td>Email:</td><td><input type="email" name="email" maxlength="45"/></td></tr>
 		<tr><td>Avatar:</td><td><input type="file" name="image"/></td></tr>
 		<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Registreer"/></td></tr>
