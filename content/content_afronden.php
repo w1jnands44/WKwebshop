@@ -46,9 +46,7 @@
             } 
             echo 'Gefeliciteerd u heeft succesvol betaald. U krijgt een email met daarin de gegevens over uw bestelling.';
             
-
-                    //give to adress
-                    $toad = "<waar naar toe>";
+                    $email = "wkwebshop@gmail.com";
 
                     //user e-mail
                     $umail = $_POST["user_mail"];
@@ -61,23 +59,23 @@
                     $ip = $_SERVER['REMOTE_ADDR'];
 
                     //opbouw mail 
-                    $body = $_POST["message"] . "<br />Verstuurd op " . $datum . " via het ip " . $ip . "<br /><br />";
+                    $body = "<br />Verstuurd op " . $datum . " via het ip " . $ip . "<br /><br />";
 
                     $mail = new PHPMailer();
 
                     $mail->IsSMTP(); // send via SMTP
-                    $mail->Host = "<smtp addres bijv: smtp.google.com>";
+                    $mail->Host = "smtp.google.com";
                     $mail->Port = 587;
                     $mail->Mailer = "smtp";
                     $mail->SMTPAuth = true; // turn on SMTP authentication
                     $mail->SMTPSecure = "tls";
-                    $mail->Username = "<e@mail here>"; // SMTP username
-                    $mail->Password = "<password>"; // SMTP password
+                    $mail->Username = "wkwebshop@gmail.com"; // SMTP username
+                    $mail->Password = "wkwebshop123"; // SMTP password
 
-                    $mail->SetFrom($umail, $umail);
-                    $mail->AddAddress($toad, $toad);
-                    $mail->Subject = $_POST["subject"];
-                    $mail->AltBody = "To view the message, please use an HTML compatible email viewer!";
+                    $mail->SetFrom($email, $email);
+                    $mail->AddAddress($umail, $umail);
+                    $mail->Subject = "Uw bestelling bij WK webshop";
+                    $mail->AltBody = "Er is een fout opgetreden.";
                     $mail->MsgHTML($body);
 
                     if (!$mail->Send())
