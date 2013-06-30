@@ -59,7 +59,11 @@
                     $ip = $_SERVER['REMOTE_ADDR'];
 
                     //opbouw mail 
-                    $body = "<br />Verstuurd op " . $datum . " via het ip " . $ip . "<br /><br />";
+                    $body = "<br />Verstuurd op " . $datum . " via het ip " . $ip . "<br /><br />
+					Aantal producten: ".$totaalpruducten." <br />
+					Totaalprijs: ".$totaalprijs."<br />
+					Wij zien u graag terug in onze webwinkel!
+					";
 
                     $mail = new PHPMailer();
 
