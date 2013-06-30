@@ -6,6 +6,15 @@
 
         	$username = $_SESSION['user_name'];
             $klant_id = $_SESSION['klant_id'];
+			
+			$getEmailKlant = "SELECT * FROM klanten WHERE klant_id =".$klant_id;
+			$emailResultaat = mysql_query($getEmailKlant);
+			
+			while ($row = mysql_fetch_array($emailResultaat)) 
+                {
+                    $klantEmail = $row["klant_email"];
+                }
+
             $totaalprijs = 0;
             $totaalproducten = 0;
 
@@ -44,11 +53,11 @@
                 $counter++;
             } 
             echo 'Gefeliciteerd u heeft succesvol betaald. U krijgt een email met daarin de gegevens over uw bestelling.';
-            
+					setcookie("wkwebshop_$username", "", time()-3600);
                     $email = "wkwebshop@gmail.com";
 
                     //user e-mail
-                    $umail = $_POST["user_mail"];
+                    $umail = $klantEmail;
 
                     // set datum 
                     $datum = date("d.m.Y H:i");
@@ -58,8 +67,8 @@
                     $ip = $_SERVER['REMOTE_ADDR'];
 
                     //opbouw mail 
-                    $body = "<br />Verstuurd op " . $datum . " via het ip " . $ip . "<br /><br />
-					Aantal producten: ".$totaalpruducten." <br />
+                    $body = "<br />Verstuurd op " . $datum . ". <br /><br />
+					Aantal producten: ".$totaalproducten." <br />
 					Totaalprijs: ".$totaalprijs."<br />
 					Wij zien u graag terug in onze webwinkel!
 					";
@@ -67,14 +76,14 @@
                     $mail = new PHPMailer();
 
                     $mail->IsSMTP(); // send via SMTP
-                    $mail->Host = "smtp.google.com";
-                    $mail->Port = 587;
+                    $mail->Host = "smtp.gmail.com";
+                    $mail->Port = 465;
                     $mail->Mailer = "smtp";
                     $mail->SMTPAuth = true; // turn on SMTP authentication
-                    $mail->SMTPSecure = "tls";
+                    $mail->SMTPSecure = "ssl";
                     $mail->Username = "wkwebshop@gmail.com"; // SMTP username
                     $mail->Password = "wkwebshop123"; // SMTP password
-
+					$mail->SMTPDebug = 1;
                     $mail->SetFrom($email, $email);
                     $mail->AddAddress($umail, $umail);
                     $mail->Subject = "Uw bestelling bij WK webshop";
