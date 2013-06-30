@@ -1,5 +1,9 @@
 <?php 
-	$username = $_SESSION['user_name'];
+	if(isset($_SESSION['user_name']))
+	{
+		$username = $_SESSION['user_name'];
+	}
+	
 	$totaalprijs = 0;
 	$totaalproducten = 0;
 
@@ -9,15 +13,15 @@
 		header("Location: index.php?page=winkelwagen");
 	}
 
-	if(isset($_COOKIE["wkwebshop_$username"]))
+	include 'connect.php';
+	
+	if(isset($username) && isset($_COOKIE["wkwebshop_$username"]))
 	{
 		$cookie = $_COOKIE["wkwebshop_$username"];
 
 		$vars = explode(";", $cookie);
 
 		$counter = 0;
-		
-		include 'connect.php';
 		
 		while (count($vars) > $counter) 
 		{

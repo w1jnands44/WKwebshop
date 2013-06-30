@@ -1,4 +1,5 @@
 <?php
+
 function encrypt($password, $username)
 {
 	$salt = substr($username, -4);

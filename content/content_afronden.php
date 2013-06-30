@@ -1,5 +1,4 @@
 <?php 
-    {
         if(isset($_SESSION['klant_id']))
         {
             include 'connect.php';
@@ -94,41 +93,13 @@
                     Please click to go to the homepage: <a href="index.php">home</a></p>
                     </div>';
                     }
+					mysql_close($connect);    
                 }
-            }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            mysql_close($connect);     
-        }
+             
         else
         {
             echo 'U bent geen klant. Dit kan komen doordat uw account administrator rechten heeft.';
         }
-    }
  ?>
 
