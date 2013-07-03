@@ -109,7 +109,9 @@
 					</select></td></tr>
 					<tr><td>Begin voorraad</td><td><input type="number" min="0" max="99" name="voorraad"/></td></tr>
 					<tr><td>Prijs</td><td><input type="text" maxlength="10" name="prijs"/></td></tr>
-					<tr><td>Afbeelding:</td><td><input type="file" name="image"/></td></tr>
+					<tr><td>Afbeelding 1:</td><td><input type="file" name="image1"/></td></tr>
+					<tr><td>Afbeelding 2:</td><td><input type="file" name="image2"/></td></tr>
+					<tr><td>Afbeelding 3:</td><td><input type="file" name="image3"/></td></tr>
 					<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Toevoegen"/></td></tr>
 				</table>
 				<input type="hidden" name="returnpage" value='admin&action=2&state=1'/>
@@ -230,7 +232,7 @@
 	{
 		include 'connect.php';
 		
-		$query = "SELECT a.artikel_id, a.artikel_naam, a.artikel_voorraad, a.artikel_beschrijving, a.artikel_prijs, a.artikel_image, a.merk_id, a.categorie_id, m.merk_id, m.merk_naam, c.categorie_id, c.categorie_naam
+		$query = "SELECT a.artikel_id, a.artikel_naam, a.artikel_voorraad, a.artikel_beschrijving, a.artikel_prijs, a.artikel_image1, a.artikel_image2, a.artikel_image3, a.merk_id, a.categorie_id, m.merk_id, m.merk_naam, c.categorie_id, c.categorie_naam
 		FROM artikelen a
 		RIGHT JOIN merken m ON a.merk_id = m.merk_id
 		RIGHT JOIN categorie c ON a.categorie_id = c.categorie_id";
@@ -249,13 +251,13 @@
 		
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
-			if($row['artikel_image'] == null || $row['artikel_image'] == "" || $row['artikel_image'] == "null")
+			if($row['artikel_image1'] == null || $row['artikel_image1'] == "" || $row['artikel_image1'] == "null")
 			{
 				$image = "images/layout/default_image_product.png";
 			}
 			else
 			{
-				$image = $row['artikel_image'];
+				$image = $row['artikel_image1'];
 			}
 		?>
 			<tr style="border-bottom:1pt solid black;text-align:right;">

@@ -14,13 +14,13 @@ if(!isset($_POST['bestellen']))
 
 		while ($row = mysql_fetch_array($resultaat)) 
 		{
-			if($row['artikel_image'] == null || $row['artikel_image'] == "")
+			if($row['artikel_image1'] == null || $row['artikel_image1'] == "")
 			{
 				$image = "images/layout/default_image_user.png";
 			}
 			else
 			{
-				$image = $row['artikel_image'];
+				$image = $row['artikel_image1'];
 			}
 ?>
 			<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">

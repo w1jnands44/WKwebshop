@@ -22,7 +22,7 @@
 		}
 	
 		if (empty($db_user_name)) {
-			echo 'Gebruiker niet gevonden';
+			header("Location: " . $_POST['returnpage'] . "&error=0");
 		}
 		else 
 		{
@@ -58,9 +58,7 @@
 			}
 			else
 			{
-				echo '<script type="text/javascript">'; 
-				echo 'alert("Het ingevoerde wachtwoord is incorrect")'; 
-				echo '</script>';
+				header("Location: " . $_POST['returnpage'] . "&error=1");
 			}
 		}
 		mysql_close($connect);

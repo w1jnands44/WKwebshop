@@ -3,6 +3,10 @@
 	{
 		$username = $_SESSION['user_name'];
 	}
+	else
+	{
+		header("Location: ?error=2");
+	}
 	
 	$totaalprijs = 0;
 	$totaalproducten = 0;

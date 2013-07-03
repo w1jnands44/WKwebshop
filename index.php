@@ -54,6 +54,26 @@
 							<table class="login_form">
 								<tr><td>Gebruikersnaam:</td><td><input type="text" name="username" maxlength="12"/></td></tr>
 								<tr><td>Wachtwoord:</td><td><input type="password" name="password" maxlength="30"/></td></tr>
+								<?php
+									if(isset($_GET['error']))
+									{
+										$error = "";
+										
+										switch ($_GET['error']) {
+											case 0:
+												$error = "Gebruiker niet gevonden.";
+												break;
+											case 1:
+												$error = "Wachtwoord komt niet overeen.";
+												break;
+											case 2:
+												$error = "U moet ingelogd zijn.";
+												break;
+										}
+										
+										echo '<tr><td colspan="2" style="text-align:center;color:red;">'. $error . '</td></tr>';
+									}
+								?>
 								<tr><td colspan="2" style="text-align:center;"><input type="submit" value="Inloggen"/></td></tr>
 								<input type="hidden" name="returnpage" value="<?php echo $_SERVER['PHP_SELF'] . "?page=" . $_GET['page'] ?>">
 								<tr><td colspan="2" style="text-align:center;">Nog geen account? Registreer <a href="index.php?page=register">hier</a>.</td></tr>
