@@ -74,7 +74,7 @@ if(!isset($_POST['bestellen']))
 ?>
 			<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
 				<div class="winkelwagen">
-					<table>
+					<!--<table>
 						<tr>
 							<td width="150px"><b>Afbeelding</b></td>
 							<td width="100px"></td>
@@ -118,10 +118,42 @@ if(!isset($_POST['bestellen']))
 							</td>
 
 						</tr>
-					</table>
+					</table>-->
+					<h1 style="margin-left:35px;"><?php echo $row['artikel_naam']; ?></h1>
+					<div style="width:700px;height:150px;">
+						<div id="imgid1" style="float:left;margin-left:35px;">
+							<img width="150px" height="150px" alt="afbeelding1" src="<?php echo $image1 ?>"/>
+						</div>
+						<div id="imgid2" style="display:block;float:left;margin-left:25px;">
+							<img width="150px" height="150px"  alt="afbeelding2" src="<?php echo $image2 ?>"/>
+						</div>
+						<div id="imgid3" style="display:block;float:left;margin-left:25px;">
+							<img width="150px" height="150px"  alt="afbeelding3" src="<?php echo $image3 ?>"/>
+						</div>
+					</div>
+					<div style="margin-top:35px;margin-left:35px;">
+						<table border="0px">
+							<tr>
+								<td>
+									Beschrijving:
+								</td>
+								<td>
+									<?php echo $row['artikel_beschrijving']; ?>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									Prijs:
+								</td>
+								<td>
+									<?php echo $row['artikel_prijs']; ?>
+								</td>
+							</tr>
+						</table>
+					</div>
 				</div> 
-			<input type="submit" name="bestellen" value="Toevoegen aan winkelwagen"/>
-		</form>
+				<input type="submit" name="bestellen" value="Toevoegen aan winkelwagen" style="margin-left:35px;margin-top:35px;"/>
+			</form>
 	
 <?php 
 		}

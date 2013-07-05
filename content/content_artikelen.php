@@ -110,9 +110,9 @@
 									<div class="product_naam">
 										<b> <?php echo $row['artikel_naam']; ?></b>
 									</div>
-									<div class="product_beschrijving">
-										<b> <?php echo $row['artikel_beschrijving']; ?></b>
-									</div>
+									<!--<div class="product_beschrijving">
+										<b> <?php //echo $row['artikel_beschrijving']; ?></b>
+									</div>-->
 									<div class="rechtsonder">
 										<div class="product_prijs">
 											<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
@@ -211,9 +211,9 @@
 							<div class="product_naam">
 								<b> <?php echo $row['artikel_naam']; ?></b>
 							</div>
-							<div class="product_beschrijving">
-								<b> <?php echo $row['artikel_beschrijving']; ?></b>
-							</div>
+							<!--<div class="product_beschrijving">
+								<b> <?php //echo $row['artikel_beschrijving']; ?></b>
+							</div>-->
 							<div class="rechtsonder">
 								<div class="product_prijs">
 									<b> <?php echo "&euro;" .$row['artikel_prijs']; ?></b>
