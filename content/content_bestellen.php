@@ -1,3 +1,34 @@
+
+<script type="text/javascript" src="jquery-2.0.2.min.js"></script>
+
+<script type="text/javascript">
+	
+	var currentimgid = 1;
+	$(function(){
+	$('#volgende').click(function()
+	{
+		$('#imgid1').css("display", "none");
+		$('#imgid2').css("display", "none");
+		$('#imgid3').css("display", "none");
+		
+		if(currentimgid == 1)
+		{
+			$('#imgid2').css("display", "block");
+			currentimgid = 2;
+		}
+		else if( currentimgid == 2)
+		{
+			$('#imgid3').css("display", "block");
+			currentimgid = 3;
+		}
+		else
+		{
+			$('#imgid1').css("display", "block");
+			currentimgid = 1;
+		}
+	});
+	});
+</script>
 <?php 
 
 if(!isset($_POST['bestellen']))
@@ -16,32 +47,62 @@ if(!isset($_POST['bestellen']))
 		{
 			if($row['artikel_image1'] == null || $row['artikel_image1'] == "")
 			{
-				$image = "images/layout/default_image_user.png";
+				$image1 = "images/layout/default_image_user.png";
 			}
 			else
 			{
-				$image = $row['artikel_image1'];
+				$image1 = $row['artikel_image1'];
+			}
+			
+			if($row['artikel_image2'] == null || $row['artikel_image2'] == "")
+			{
+				$image2 = "images/layout/default_image_user.png";
+			}
+			else
+			{
+				$image2 = $row['artikel_image2'];
+			}
+			
+			if($row['artikel_image3'] == null || $row['artikel_image3'] == "")
+			{
+				$image3 = "images/layout/default_image_user.png";
+			}
+			else
+			{
+				$image3 = $row['artikel_image3'];
 			}
 ?>
 			<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">
 				<div class="winkelwagen">
 					<table>
 						<tr>
-							<td width="200px"><b>Afbeelding</b></td>
+							<td width="150px"><b>Afbeelding</b></td>
+							<td width="100px"></td>
 							<td width="100px"><b>Naam</b></td>
 							<td width="100px"><b>Beschrijving</b></td>
 							<td width="100px"><b>Prijs<b></td>
 							<td width="100px"><b>Aantal<b></td>
 						</tr>
 						<tr>
-							<td colspan="5">
+							<td colspan="6">
 								<hr />
 							</td>
 						</tr>
 
 						<tr>
 							<td>
-								<img width="150px" alt="afbeelding" src="<?php echo $image ?>"/>
+							<div id="imgid1">
+								<img width="150px" height="100px" alt="afbeelding1" src="<?php echo $image1 ?>"/>
+							</div>
+							<div id="imgid2" style="display:none">
+								<img width="150px" height="100px"  alt="afbeelding2" src="<?php echo $image2 ?>"/>
+							</div>
+							<div id="imgid3" style="display:none">
+								<img width="150px" height="100px"  alt="afbeelding3" src="<?php echo $image3 ?>"/>
+							</div>
+							</td>
+							<td>
+								<input type="button" value="Volgende" id="volgende">
 							</td>
 							<td>
 								<?php echo $row['artikel_naam']; ?>
@@ -86,7 +147,6 @@ else
 	{
 		setcookie("wkwebshop_$username", $_COOKIE["wkwebshop_$username"].";". $artikelid .";". $aantal, $expire);
 	}
-	
 
 	header("Location: index.php?page=winkelwagen");
 } 
