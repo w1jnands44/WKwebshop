@@ -26,6 +26,14 @@
 		$vars = explode(";", $cookie);
 
 		$counter = 0;
+
+		echo '<table width="100%">';
+		echo '<th>Artikel naam</th> <th>Prijs</th> <th>Aantal</th>';
+		echo '<tr>
+				<td  colspan="3">
+					<hr />
+				</td>
+			  </tr>';
 		
 		while (count($vars) > $counter) 
 		{
@@ -33,22 +41,33 @@
 			$query = "SELECT * FROM artikelen WHERE artikel_id = ".$vars[$counter];
 			$counter++;
 			$resultaat = mysql_query($query) or die (mysql_error()) ;
-			
-			echo '<table style="border-collapse:collapse;font-size:18px;font-weight:bold;text-align:center;">';
-			
+
 			while ($row = mysql_fetch_array($resultaat)) 
 			{
-				if($row['artikel_image'] == null || $row['artikel_image'] == "" || $row['artikel_image'] == "null")
+				if($row['artikel_image1'] == null || $row['artikel_image1'] == "" || $row['artikel_image1'] == "null")
 				{
 					$image = "images/layout/default_image_product.png";
 				}
 				else
 				{
-					$image = $row['artikel_image'];
+					$image = $row['artikel_image1'];
 				}
 			?>
-				<div class="home_artikel">
 
+				<tr>
+					<td style="text-align:center;">
+						<?php echo $row['artikel_naam']; ?>
+					</td>
+					<td style="text-align:center;">
+						<?php echo $row['artikel_prijs']; ?>
+					</td>
+					<td style="text-align:center;">
+						<input type="number" style="width:50px;" value="<?php echo $vars[$counter]; ?>"></input>
+					</td>
+				</tr>
+			
+			
+				<!--<div class="home_artikel">
 									<div class="product_afbeelding">
 										<img class="afbeelding" alt="afbeelding" src="<?php echo $image; ?>"/>
 									</div>	
@@ -67,7 +86,7 @@
 											<b>Aantal: </b><?php echo $vars[$counter]; ?>
 										</div>
 									</div>
-								</div> 
+								</div>-->
 			<?php 
 
 			$totaalprijs += $vars[$counter] * $row['artikel_prijs'];
@@ -75,9 +94,9 @@
 
 			}
 			 
-			echo '</table>';
 			$counter++;
-		}		
+		}
+		echo '</table>';	
 	}
 	else
 	{
