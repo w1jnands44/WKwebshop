@@ -149,6 +149,14 @@ if(!isset($_POST['bestellen']))
 									<?php echo $row['artikel_prijs']; ?>
 								</td>
 							</tr>
+							<tr>
+								<td>
+									Aantal:
+								</td>
+								<td>
+									<input type="number" value="1" name="aantal" min="1" max="99">
+								</td>
+							</tr>
 						</table>
 					</div>
 				</div> 
