@@ -3,8 +3,6 @@ include 'connect.php';
 
 if(isset($_POST['voornaam']))
 {
-	echo "voornaam set" . $_POST['email'];
-	
 	if(isset($_POST['email']))
 	{
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -61,5 +59,5 @@ else
 	mysql_query($query);
 }
 
-//header("Location: index.php?page=" . $_POST['returnpage']);
+header("Location: index.php?page=" . $_POST['returnpage']);
 ?>
