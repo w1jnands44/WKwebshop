@@ -12,40 +12,11 @@
 	</head>
 	
 	<body>
-		<div class="header">
-		</div>
-		<div class="menu">
-			<a href="?page=home"><div class="menu_txt">Home</div></a>
-			<a href="?page=artikelen"><div class="menu_txt">Artikelen</div></a>
-			<?php
-				if(isset($_SESSION['logged']))
-				{
-					echo '<a href="?page=details"><div class="menu_txt">Account</div></a>';
-					if($_SESSION['user_acceslevel'] >= 3)
-					{
-						echo '<a href="?page=admin"><div class="menu_txt">Admin Panel</div></a>';
-					}
-				}
-			?>
-			<a href="?page=winkelwagen" style="float:right;"><img src="images/layout/cart.jpg" style="float:left;width:40px;height:40px;"/><div class="menu_txt" style="font-size:14px;margin-top:11px;">Winkelwagen</div></a>
-		</div>
-		<div class="content_holder">
-			<div class="content">
-				<?php
-					$filename = 'content/content_' . $_GET['page'] . '.php';
-					
-					if(file_exists ($filename))
-					{
-						include $filename;
-					}
-					else
-					{
-						include 'content/content_home.php';
-					}
-				?>
+		<div style="width:1000px;height:150px;margin: 0 auto;">
+			<div class="header">
+				<h1 id="header-title">WK-Webshop</h1>
 			</div>
-			<div class="side_info">
-				<div class="login_box">
+			<div class="login_box">
 				<?php
 					if(!isset($_SESSION['logged']))
 					{
@@ -110,6 +81,39 @@
 					}
 				?>
 				</div>
+			</div>
+		<div class="menu">
+			<a href="?page=home"><div class="menu_txt">Home</div></a>
+			<a href="?page=artikelen"><div class="menu_txt">Artikelen</div></a>
+			<?php
+				if(isset($_SESSION['logged']))
+				{
+					echo '<a href="?page=details"><div class="menu_txt">Account</div></a>';
+					if($_SESSION['user_acceslevel'] >= 3)
+					{
+						echo '<a href="?page=admin"><div class="menu_txt">Admin Panel</div></a>';
+					}
+				}
+			?>
+			<a href="?page=winkelwagen" style="float:right;"><img src="images/layout/cart.png" style="float:left;width:40px;height:40px;"/><div class="menu_txt" style="font-size:14px;margin-top:11px;">Winkelwagen</div></a>
+		</div>
+		<div class="content_holder">
+			<div class="side_info">
+				
+			</div>
+			<div class="content">
+				<?php
+					$filename = 'content/content_' . $_GET['page'] . '.php';
+					
+					if(file_exists ($filename))
+					{
+						include $filename;
+					}
+					else
+					{
+						include 'content/content_home.php';
+					}
+				?>
 			</div>
 		</div>
 		<div class="footer"></div>
