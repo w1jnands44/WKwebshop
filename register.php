@@ -3,6 +3,16 @@ include 'connect.php';
 
 if(isset($_POST['voornaam']))
 {
+	echo "voornaam set" . $_POST['email'];
+	
+	if(isset($_POST['email']))
+	{
+		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+			header("Location: index.php?page=register&error=3");
+			//echo "invalid";
+		}
+	}
+	
 	$voornaam = ucfirst(strtolower($_POST['voornaam']));
 	$achternaam =  ucfirst(strtolower($_POST['achternaam']));
 
@@ -51,5 +61,5 @@ else
 	mysql_query($query);
 }
 
-header("Location: index.php?page=" . $_POST['returnpage']);
+//header("Location: index.php?page=" . $_POST['returnpage']);
 ?>

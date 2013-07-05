@@ -15,3 +15,17 @@
 	<input type="hidden" name="acceslevel" value="1"/>
 	<input type="hidden" name="returnpage" value="home"/>
 </form>
+<?php
+	if(isset($_GET['error']))
+	{
+		$error = "";
+		
+		switch ($_GET['error']) {
+			case 3:
+				$error = "Email adres is niet correct.";
+				break;
+		}
+		
+		echo '<div style="text-align:center;color:red;">'. $error . '</div>';
+	}
+?>
