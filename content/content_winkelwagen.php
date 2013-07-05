@@ -1,4 +1,7 @@
 <?php 
+	
+	include 'connect.php';
+
 	if(isset($_SESSION['user_name']))
 	{
 		$username = $_SESSION['user_name'];
@@ -17,7 +20,34 @@
 		header("Location: index.php?page=winkelwagen");
 	}
 
-	include 'connect.php';
+	if (isset($_POST['updateWinkelwagen']))
+	{
+			$cookie = $_COOKIE["wkwebshop_$username"];
+
+			$vars = explode(";", $cookie);
+
+			print_r($vars);
+
+			
+			$counter = 0;
+
+			while (count($vars) > $counter) 
+			{
+				$query = "SELECT * FROM artikelen WHERE artikel_id = ".$vars[$counter];
+				$counter++;
+				$resultaat = mysql_query($query) or die (mysql_error()) ;
+
+				while ($row = mysql_fetch_array($resultaat)) 
+				{
+
+				}
+
+				$totaalprijs += $vars[$counter] * $row['artikel_prijs'];
+				$totaalproducten += $vars[$counter];
+			}
+		$counter++; 
+	}
+
 	
 	if(isset($username) && isset($_COOKIE["wkwebshop_$username"]))
 	{
@@ -59,10 +89,10 @@
 						<?php echo $row['artikel_naam']; ?>
 					</td>
 					<td style="text-align:center;">
-						<?php echo $row['artikel_prijs']; ?>
+						<?php echo "&euro;".$row['artikel_prijs']; ?>
 					</td>
 					<td style="text-align:center;">
-						<input type="number" style="width:50px;" value="<?php echo $vars[$counter]; ?>"></input>
+						<input id="inputNumber" name="" type="number" min="1" max="99" style="width:50px;" value="<?php echo $vars[$counter]; ?>"/>
 					</td>
 				</tr>
 			
@@ -110,6 +140,9 @@
 		<tr>
 			<td>
 				<input type="submit" name="deleteWinkelwagen" value="Uw winkelwagen leeg maken."/>
+			</td>
+			<td>
+				<input type="submit" id="updateWinkelwagen" name="updateWinkelwagen" value="Winkelwagen bijwerken."
 			</td>
 			<td>
 				<b>Totaal prijs: </b> <?php echo "&euro;". $totaalprijs; ?>
